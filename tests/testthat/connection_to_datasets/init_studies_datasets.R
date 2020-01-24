@@ -2,6 +2,8 @@ init.studies.dataset.cnsim <- function(variables)
 {
     if (ds.test_env$secure_login_details)
     {
+      if (ds.test_env$driver == "OpalDriver")
+      {
         ds.test_env$server <- c("sim1", "sim2", "sim3")
         ds.test_env$url <- c(ds.test_env$ip_address_1,ds.test_env$ip_address_2,ds.test_env$ip_address_3)
         ds.test_env$user <- c(ds.test_env$user_1,ds.test_env$user_2,ds.test_env$user_3)
@@ -11,9 +13,14 @@ init.studies.dataset.cnsim <- function(variables)
                                                                       ds.test_env$url,
                                                                       ds.test_env$table,
                                                                       ds.test_env$user,
-                                                                      ds.test_env$password)
-
-        ds.test_env$stats.var <- variables
+                                                                      ds.test_env$password,
+                                                                      .silent = TRUE)
+      }
+      else 
+      {
+         ds.test_env$login.data <- DSLite::setupCNSIMTest("dsBase", env = ds.test_env)
+      }
+      ds.test_env$stats.var <- variables
     }
 }
 
@@ -21,6 +28,8 @@ init.studies.dataset.dasim <- function(variables)
 {
     if (ds.test_env$secure_login_details)
     {
+      if (ds.test_env$driver == "OpalDriver")
+      {
         ds.test_env$server <- c("sim1", "sim2", "sim3")
         ds.test_env$url <- c(ds.test_env$ip_address_1,ds.test_env$ip_address_2,ds.test_env$ip_address_3)
         ds.test_env$user <- c(ds.test_env$user_1,ds.test_env$user_2,ds.test_env$user_3)
@@ -30,9 +39,14 @@ init.studies.dataset.dasim <- function(variables)
                                                                       ds.test_env$url,
                                                                       ds.test_env$table,
                                                                       ds.test_env$user,
-                                                                      ds.test_env$password)
-
-        ds.test_env$stats.var <- variables
+                                                                      ds.test_env$password,
+                                                                      .silent = TRUE)
+      }
+      else 
+      {
+        ds.test_env$login.data <- DSLite::setupDASIMTest("dsBase", env = ds.test_env)
+      }
+      ds.test_env$stats.var <- variables
     }
 }
 
@@ -40,6 +54,8 @@ init.studies.dataset.survival <- function(variables)
 {
     if (ds.test_env$secure_login_details)
     {
+      if (ds.test_env$driver == "OpalDriver")
+      {
         ds.test_env$server <- c("survival1", "survival2", "survival3")
         ds.test_env$url <- c(ds.test_env$ip_address_1,ds.test_env$ip_address_2,ds.test_env$ip_address_3)
         ds.test_env$user <- c(ds.test_env$user_1,ds.test_env$user_2,ds.test_env$user_3)
@@ -49,9 +65,14 @@ init.studies.dataset.survival <- function(variables)
                                                                       ds.test_env$url,
                                                                       ds.test_env$table,
                                                                       ds.test_env$user,
-                                                                      ds.test_env$password)
-
-        ds.test_env$stats.var <- variables
+                                                                      ds.test_env$password,
+                                                                      .silent = TRUE)
+      }
+      else 
+      {
+        ds.test_env$login.data <- DSLite::setupSURVIVALTest("dsBase", env = ds.test_env)
+      }
+      ds.test_env$stats.var <- variables
     }
 }
 
