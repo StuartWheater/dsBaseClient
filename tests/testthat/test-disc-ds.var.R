@@ -12,7 +12,13 @@
 # Set up
 #
 
+context("ds.var::disc::setup")
+
 connect.studies.dataset.cnsim(list("LAB_TSC", "LAB_TRIG"))
+
+test_that("setup", {
+    ds_expect_variables(c("D"))
+})
 
 #
 # Tests
@@ -65,4 +71,12 @@ test_that("var values [both]", {
 # Done
 #
 
+context("ds.var::disc::shutdown")
+
+test_that("shutdown", {
+    ds_expect_variables(c("D", "unsubset_df", "subset_df"))
+})
+
 disconnect.studies.dataset.cnsim()
+
+context("ds.var::disc::down")

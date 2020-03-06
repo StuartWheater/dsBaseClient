@@ -12,7 +12,13 @@
 # Set up
 #
 
+context("ds.rm::disc::setup")
+
 connect.studies.dataset.survival(list("survtime", "time.id", "female"))
+
+test_that("setup", {
+    ds_expect_variables(c("D"))
+})
 
 #
 # Tests
@@ -73,4 +79,12 @@ test_that("simple test", {
 # Done
 #
 
+context("ds.rm::disc::shutdown")
+
+test_that("shutdown", {
+    ds_expect_variables(c("D"))
+})
+
 disconnect.studies.dataset.survival()
+
+context("ds.rm::disc::down")

@@ -13,7 +13,13 @@
 # Set up
 #
 
+context("ds.table::disc::setup")
+
 connect.all.datasets()
+
+test_that("setup", {
+    ds_expect_variables(c("D"))
+})
 
 #
 # Tests
@@ -26,7 +32,7 @@ test_that("table disclosure", {
   myvectors <- c('factorCharacter', 'factorInteger')
   ds.dataFrame(x=myvectors, newobj="tablesource")
  # print(ds.ls())
-  print(ds.colnames("tablesource"))
+ # print(ds.colnames("tablesource"))
 #  table.res <- ds.table(rvar='tablesource$D.FACTOR_INTEGER', cvar='tablesource$D.FACTOR_CHARACTER', newobj="new_table")
   table.res <- ds.table(rvar='tablesource$factorCharacter', cvar='tablesource$factorInteger', newobj="new_table")
 
@@ -46,4 +52,13 @@ test_that("table disclosure", {
 #
 # Done
 #
+
+context("ds.table::disc::shutdown")
+
+test_that("shutdown", {
+    ds_expect_variables(c("D", "factorCharacter", "factorInteger", "tablesource"))
+})
+
 disconnect.all.datasets()
+
+context("ds.table::disc::down")
