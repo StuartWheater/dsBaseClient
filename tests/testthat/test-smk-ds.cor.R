@@ -41,7 +41,8 @@ test_that("simple test, combine, pairwise.complete", {
 })
 
 test_that("simple test, combine, casewise.complete", {
-    expect_warning(res <- ds.cor(x="D$survtime", y="D$time.id", type="combine", naAction="casewise.complete"), "NAs introduced by coercion")
+#    expect_warning(res <- ds.cor(x="D$survtime", y="D$time.id", type="combine", naAction="casewise.complete"), "NAs introduced by coercion")
+    res <- ds.cor(x="D$survtime", y="D$time.id", type="combine", naAction="casewise.complete")
 
     expect_length(res, 5)
     expect_equal(class(res$`Number of missing values in each variable`), "matrix")
@@ -79,7 +80,8 @@ test_that("simple test, split, pairwise.complete", {
 })
 
 test_that("simple test, split, casewise.complete", {
-    expect_warning(res <- ds.cor(x="D$survtime", y="D$time.id", type="split", naAction="casewise.complete"), "NAs introduced by coercion")
+#    expect_warning(res <- ds.cor(x="D$survtime", y="D$time.id", type="split", naAction="casewise.complete"), "NAs introduced by coercion")
+    res <- ds.cor(x="D$survtime", y="D$time.id", type="split", naAction="casewise.complete")
 
     expect_length(res, 3)
     expect_length(res[[1]], 5)

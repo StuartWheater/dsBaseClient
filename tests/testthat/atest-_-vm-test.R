@@ -12,7 +12,7 @@
 # Set up
 #
 
-init.all.datasets()
+connect.testing.datasets()
 
 #
 # Tests
