@@ -13,10 +13,10 @@ context("ds.table::math::row and col proportions::multiple")
 
 test_that("row and col proportions sum to 1", 
           {
-            connect.testing.group.dataset.1()
+            connect.testing.dataset.factor_levels.1()
             
             server.result <- ds.table("D$COLOURS", "D$POSITIVE.NUMBERS")
-            
+
             ##when 2 studies being combined for table: $output.list gets the tables part, 
             # [[1]] is study 1 row props
             # [[2]] is study 1 col props
@@ -50,6 +50,6 @@ test_that("row and col proportions sum to 1",
             }
             
             
-            disconnect.testing.group.dataset.1()
+            disconnect.testing.dataset.factor_levels.1()
           }
 )

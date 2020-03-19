@@ -9,7 +9,8 @@
 #-------------------------------------------------------------------------------
 
 context("ds.table::expt::setup")
-connect.testing.group.dataset.1()
+
+connect.testing.dataset.factor_levels.1()
 
 context("ds.table::expt::single")
 test_that("combined data set",
@@ -25,10 +26,12 @@ test_that("combined data set",
   #print(conns)
   
   
-  GROUP1 <- read.csv("data_files/GROUP1.csv")
-  GROUP2 <- read.csv("data_files/GROUP2_test.csv")
+  GROUP1 <- read.csv("data_files/FACTOR_LEVELS/FACTOR_LEVELS_DATASET1.csv")
+  GROUP2 <- read.csv("data_files/FACTOR_LEVELS/FACTOR_LEVELS_DATASET2.csv")
+  GROUP3 <- read.csv("data_files/FACTOR_LEVELS/FACTOR_LEVELS_DATASET3.csv")
   
   server.result <- ds.table("D$COLOURS", "D$POSITIVE.NUMBERS")
+
   local.result1  <-table(GROUP1$COLOURS, GROUP1$POSITIVE.NUMBERS)
   
   local.result2  <-table(GROUP2$COLOURS, GROUP2$POSITIVE.NUMBERS)
@@ -291,4 +294,5 @@ test_that("combined data set",
   
   }
 )
-disconnect.testing.group.dataset.1()
+
+disconnect.testing.dataset.factor_levels.1()

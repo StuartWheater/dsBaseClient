@@ -70,7 +70,8 @@ test_that("shutdown", {
 disconnect.all.datasets()
 
 
-connect.testing.group.dataset.1()
+connect.testing.dataset.factor_levels.1()
+
 context("ds.table::smkgrouptest")
 test_that("simple table", {
   
@@ -80,10 +81,10 @@ test_that("simple table", {
   server.result <- ds.table("D$COLOURS", "D$POSITIVE.NUMBERS") ##############it works!!! ###############
   
   expect_length(server.result, 2)
-  expect_length(server.result$output.list, 9)
+  expect_length(server.result$output.list, 6)
   expect_equal(class(server.result$output.list), "list")
 }  
 )
-disconnect.testing.group.dataset.1()
+disconnect.testing.dataset.factor_levels.1()
 
 context("ds.table::smk::done")
