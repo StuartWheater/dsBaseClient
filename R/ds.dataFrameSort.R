@@ -130,6 +130,7 @@
 #' will return the message: "ALL OK: there are no studysideMessage(s) on this datasource".
 #' @author Paul Burton, with critical error identification by
 #' Leire Abarrategui-Martinez, for DataSHIELD Development Team, 2/4/2020
+#' @export
 ds.dataFrameSort<-function(df.name=NULL, sort.key.name=NULL, sort.descending=FALSE,
 						   sort.method="default", newobj=NULL, datasources=NULL){
   
