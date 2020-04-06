@@ -8,14 +8,27 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 
+
+#
+# Set up
+#
+
+context("ds.dataFrameSort::expt::setup")
+
 source('connection_to_datasets/init_testing_datasets.R')
 source('definition_tests/def-ds.dataFrameSort.R')
 
-###!!! test the data frame creation
+connect.all.datasets()
 
+test_that("setup", {
+    ds_expect_variables(c("D"))
+})
 
+#
+# Tests
+#
 
-context("ds.dataFrameSort()::expt::numeric::increasing")
+context("ds.dataFrameSort::expt::numeric::increasing")
 test_that("combined data set",
 {
   connect.all.datasets()
@@ -23,3 +36,20 @@ test_that("combined data set",
 })
 
 
+#
+# Shutdown
+#
+
+context("ds.dataFrameSort::expt::shutdown")
+
+test_that("shutdown", {
+    ds_expect_variables(c("D"))
+})
+
+disconnect.all.datasets()
+
+#
+# Done
+#
+
+context("ds.dataFrameSort::expt::done")
