@@ -110,9 +110,13 @@ if(Boolean.operator == ">="){
    BO.n<-6
 }
 
+if(BO.n == 0){
+   stop(paste0("An unrecognized Boolean operator, ", Boolean.operator, ", has provide"), call.=FALSE)
+}
+
   # if no value spcified for output object, then specify a default
   if(is.null(newobj)){
-    newobj <- "Boole.object"
+    newobj <- "boole.newobj"
   }
 
 # CALL THE MAIN SERVER SIDE FUNCTION
