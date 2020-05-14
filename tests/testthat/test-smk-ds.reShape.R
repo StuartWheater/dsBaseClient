@@ -41,6 +41,33 @@ test_that("simplest ds.reShape, wide", {
 #     expect_equal(res$validity.check, "<reshape2_obj> appears valid in all sources")
 # })
 
+test_that("simplest ds.reShape, wide", {
+    res <- ds.reShape(data.name="D", v.names="female", timevar.name="time.id", idvar.name="id", direction="wide", newobj="reshape2_obj")
+
+    expect_length(res, 2)
+    expect_equal(res$is.object.created, "A data object <reshape2_obj> has been created in all specified data sources")
+    expect_equal(res$validity.check, "<reshape2_obj> appears valid in all sources")
+
+    res.colnames <- ds.colnames("reshape2_obj")
+    expect_length(res.colnames, 3)
+    expect_equal(res.colnames$survival1, c("id", "study.id", "cens", "age.60", "female.1", "female.4", "female.6", "female.3", "female.2", "female.5"))
+    expect_equal(res.colnames$survival2, c("id", "study.id", "cens", "age.60", "female.1", "female.3", "female.2", "female.4", "female.5", "female.6"))
+    expect_equal(res.colnames$survival3, c("id", "study.id", "cens", "age.60", "female.1", "female.4", "female.2", "female.3", "female.5", "female.6"))
+
+    res.summary.female.1 <- ds.summary("reshape2_obj$female.1")
+    print(res.summary.female.1)
+#    res.summary.female.2 <- ds.summary("reshape2_obj$female.2")
+#    print(res.summary.female.2)
+#    res.summary.female.3 <- ds.summary("reshape2_obj$female.3")
+#    print(res.summary.female.3)
+#    res.summary.female.4 <- ds.summary("reshape2_obj$female.4")
+#    print(res.summary.female.4)
+#    res.summary.female.5 <- ds.summary("reshape2_obj$female.5")
+#    print(res.summary.female.5)
+#    res.summary.female.6 <- ds.summary("reshape2_obj$female.6")
+#    print(res.summary.female.6)
+})
+
 #
 # Done
 #
@@ -48,7 +75,7 @@ test_that("simplest ds.reShape, wide", {
 context("ds.reShape::smk::shutdown")
 
 test_that("shutdown", {
-    ds_expect_variables(c("D", "reshape1_obj"))
+    ds_expect_variables(c("D", "reshape1_obj", "reshape2_obj"))
 })
 
 disconnect.studies.dataset.survival()
