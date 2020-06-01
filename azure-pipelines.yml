@@ -126,7 +126,7 @@ jobs:
       sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu xenial-cran40/"
       sudo apt-get update --ignore-missing
       
-      sudo apt-get install --ignore-missing -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgsl-dev r-base -y
+      sudo apt-get install --ignore-missing --ignore-hold -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgsl-dev r-base -y
       sudo R -q -e "install.packages(c('devtools','metafor','fields','covr'), dependencies=TRUE, repos='https://cloud.r-project.org')"              
       sudo R -q -e "install.packages(c('DSI','DSOpal','DSLite'), dependencies=TRUE, repos='https://cloud.r-project.org')"
 
