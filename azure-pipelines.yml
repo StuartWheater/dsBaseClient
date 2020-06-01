@@ -46,8 +46,8 @@ resources:
   - repository: datashield-infrastructureRepo
     type: github
     endpoint: datashield-testing
-    name: datashield/datashield-infrastructure
-    ref: v6.1-dev
+    name: StuartWheater/datashield-infrastructure
+    ref: v6.1-dev_CI
 
 
 
@@ -186,10 +186,10 @@ jobs:
   - bash: |
   
       # Set up puppet and r10k
-      wget -nv https://apt.puppetlabs.com/puppet5-release-xenial.deb
+      wget --no-check-certificate -nv https://apt.puppetlabs.com/puppet5-release-xenial.deb
       sudo dpkg -i puppet5-release-xenial.deb
       sudo apt-get install -qq -f
-      sudo apt-get update
+      sudo apt-get update --ignore-missing
       sudo rm -f puppet5-release-xenial.deb
 
       sudo apt-get install puppet-agent -y
