@@ -127,10 +127,10 @@ jobs:
       echo "Point #1"
       sudo apt-get install -f
       echo "Point #2"
-      sudo apt-get update --allow-unauthenticated
+      sudo apt-get update --ignore-missing --allow-unauthenticated
       echo "Point #3"
       
-      sudo apt-get install --allow-unauthenticated -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgsl-dev r-base -y
+      sudo apt-get install --ignore-missing --allow-unauthenticated -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgsl-dev r-base -y
       echo "Point #4"
       sudo R -q -e "install.packages(c('devtools','metafor','fields','covr'), dependencies=TRUE, repos='https://cloud.r-project.org')"              
       sudo R -q -e "install.packages(c('DSI','DSOpal','DSLite'), dependencies=TRUE, repos='https://cloud.r-project.org')"
