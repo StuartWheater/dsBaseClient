@@ -129,8 +129,8 @@ jobs:
       sudo apt-get update
       
       sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgsl-dev r-base -y
-      sudo R -q -e "install.packages(c('renv'), dependencies=TRUE, repos='https://cloud.r-project.org')"
-      sudo R -q -e "renv::consent(TRUE); renv::restore()"
+      R -q -e "install.packages(c('renv'), dependencies=TRUE, repos='https://cloud.r-project.org')"
+      R -q -e "renv::consent(TRUE); renv::restore()"
 
     displayName: 'Install all dependencies for dsBaseClient'
     condition: succeeded()
@@ -147,7 +147,7 @@ jobs:
       orig_sum=$(find man -type f | sort -u | xargs cat | md5sum)
 
       # Rebuild the documentation.
-      R -e "devtools::document()"
+      R -e "library('devtools'); devtools::document()"
 
       # Concatenate all the files in the man dir into one long string and md5sum it.
       new_sum=$(find man -type f | sort -u | xargs cat | md5sum)
