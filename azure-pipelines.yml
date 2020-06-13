@@ -147,7 +147,7 @@ jobs:
       orig_sum=$(find man -type f | sort -u | xargs cat | md5sum)
 
       # Rebuild the documentation.
-      R -q -e "renv::restore(); devtools::document()"
+      R -q -e "renv::restore(); library('devtools'); devtools::document()"
 
       # Concatenate all the files in the man dir into one long string and md5sum it.
       new_sum=$(find man -type f | sort -u | xargs cat | md5sum)
@@ -173,7 +173,7 @@ jobs:
     # If this step fails still mark as failed, but don't stop the rest of the steps running.    
   - bash: |
   
-      R -q -e "renv::restore(); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
+      R -q -e "renv::restore(); library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
       grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout && grep --quiet " 0 notes" azure-pipelines_check.Rout
 
     workingDirectory: $(Pipeline.Workspace)/dsBaseClient
@@ -232,7 +232,7 @@ jobs:
       # Any of the below makes the tests work.
       #sudo R --verbose -e 'devtools::test()'
       #sudo R --verbose -e 'devtools::install()'
-      sudo R --verbose -e 'devtools::check()'            
+      sudo R --verbose -e 'renv::restore(); library('devtools'); devtools::check()'
       
       pwd
       mkdir $(Pipeline.Workspace)/logs
@@ -242,6 +242,7 @@ jobs:
       # R output and messages are redirected by sink() to test_console_output.txt
       # junit reporter output is to test_results.xml
       sudo R -q -e '
+        renv::restore();
         library(covr);
         write.csv(
                   coverage_to_list(
