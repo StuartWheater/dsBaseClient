@@ -130,7 +130,7 @@ jobs:
       
       sudo apt-get install -qq libxml2-dev libcurl4-openssl-dev libssl-dev libgsl-dev r-base -y
       sudo R -q -e "install.packages(c('renv'), dependencies=TRUE, repos='https://cloud.r-project.org')"
-      R -q -e "renv::consent(TRUE); renv::restore()"
+      R -q -e "renv::consent(TRUE)"
 
     displayName: 'Install all dependencies for dsBaseClient'
     condition: succeeded()
@@ -147,7 +147,7 @@ jobs:
       orig_sum=$(find man -type f | sort -u | xargs cat | md5sum)
 
       # Rebuild the documentation.
-      R -e "library('devtools'); devtools::document()"
+      R -q -e "renv::restore(); devtools::document()"
 
       # Concatenate all the files in the man dir into one long string and md5sum it.
       new_sum=$(find man -type f | sort -u | xargs cat | md5sum)
@@ -173,7 +173,7 @@ jobs:
     # If this step fails still mark as failed, but don't stop the rest of the steps running.    
   - bash: |
   
-      R -q -e "library('devtools'); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
+      R -q -e "renv::restore(); devtools::check(args = c('--no-examples'))" | tee azure-pipelines_check.Rout
       grep --quiet "^0 errors" azure-pipelines_check.Rout && grep --quiet " 0 warnings" azure-pipelines_check.Rout && grep --quiet " 0 notes" azure-pipelines_check.Rout
 
     workingDirectory: $(Pipeline.Workspace)/dsBaseClient
