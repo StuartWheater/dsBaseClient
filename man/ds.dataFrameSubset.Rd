@@ -58,7 +58,7 @@ Default is NULL, so NAs are dropped.}
 
 \item{newobj}{This a character string providing a name for the subset
 data.frame representing the primary output of the ds.dataFrameSubset() function.
-If no name is specified, newobj will be given the default name 'dfsubset'}
+If no name is specified or NULL is specified, newobj will be given the name 'dataframesubset.newobj'}
 
 \item{datasources}{specifies the particular 'connection object(s)' to use.
 e.g. if you have several data sets in the sources you are working with
