@@ -2,7 +2,7 @@
 % Please edit documentation in R/ds.dataFrameSubset.R
 \name{ds.dataFrameSubset}
 \alias{ds.dataFrameSubset}
-\title{Subsetting data frames in the server-side}
+\title{subsetting a serverside data.frame}
 \usage{
 ds.dataFrameSubset(
   df.name = NULL,
@@ -18,60 +18,107 @@ ds.dataFrameSubset(
 )
 }
 \arguments{
-\item{df.name}{a character string providing the name of the data frame to be subseted.}
+\item{df.name}{a character string providing the name for the data.frame
+to be sorted.}
 
-\item{V1.name}{A character string specifying the name of the vector 
-to which the Boolean operator is to be applied to define the subset.
-For more information see details.}
+\item{V1.name}{A character string specifying the name of a subsetting vector
+to which a Boolean operator will be applied to define the subset to be created.}
 
-\item{V2.name}{A character string specifying the name of the vector to compare 
-with \code{V1.name}.}
+\item{V2.name}{A character string specifying the name of the vector
+or scalar to which the values in the vector specified by the argument <V1.name>
+is to be compared. So, for example, if <V2.name>
+is a scalar (e.g. '4')
+and the <Boolean.operator> argument is '<=', the subset data.frame that is created
+will include all rows that correspond to a value of 4 or less in the subsetting
+vector specified by the <V1.name> argument. If <V2.name> specifies a vector
+(which must be of strictly the same length as the vector specified by <V1.name>)
+and the <Boolean.operator> argument is '==', the subset data.frame that is
+created will include
+all rows in which the values in the vectors specified by <V1.name> and <V2.name>
+are equal.}
 
 \item{Boolean.operator}{A character string specifying one of six possible Boolean operators:
-\code{'==', '!=', '>', '>=', '<'} and \code{'<='}.}
+'==', '!=', '>', '>=', '<', '<='}
 
 \item{keep.cols}{a numeric vector specifying the numbers of the columns to be kept in the
-final subset.}
+final subset when subsetting by column. For example: keep.cols=c(2:5,7,12) will keep
+columns 2,3,4,5,7 and 12.}
 
-\item{rm.cols}{a numeric vector specifying the numbers of the columns to be removed from 
-the final subset.}
+\item{rm.cols}{a numeric vector specifying the numbers of the columns to be removed before
+creating the final subset when subsetting by column. For example: rm.cols=c(2:5,7,12)
+will remove columns 2,3,4,5,7 and 12.}
 
-\item{keep.NAs}{logical, if TRUE the missing values are included in the subset. 
-If FALSE or NULL all rows with at least one missing values are removed from the subset.}
+\item{keep.NAs}{logical, if TRUE any NAs in the internally generated Boolean vector
+that indicates whether each row is kept or dropped (1 or TRUE = keep, 0 or FALSE = drop)
+will be converted into 1 or TRUE and so these rows will be included in the subset.
+Such NAs could be caused by NAs in the vectors identified by <V1.name> or <V2.name>.
+If <keep.NAs> is FALSE or NULL, NAs in the final Boolean vector will
+be converted to 0s and the corresponding row will therefore be dropped from the subset.
+Default is NULL, so NAs are dropped.}
 
-\item{newobj}{a character string that provides the name for the output 
-object that is stored on the data servers. Default \code{dataframesubset.newobj}.}
+\item{newobj}{This a character string providing a name for the subset
+data.frame representing the primary output of the ds.dataFrameSubset() function.
+If no name is specified, newobj will be given the default name 'dfsubset'}
 
-\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.
-If the \code{datasources}
-the default set of connections will be used: see \code{\link{datashield.connections_default}}.}
+\item{datasources}{specifies the particular 'connection object(s)' to use.
+e.g. if you have several data sets in the sources you are working with
+called opals.a, opals.w2, and connection.xyz, you can choose which of
+these to work with. The call 'datashield.connections_find()' lists all of
+the different datasets available and if one of these is called 'default.connections'
+that will be the dataset used by default if no other dataset is specified. If you
+wish to change the connections you wish to use by default the call
+datashield.connections_default('opals.a') will set 'default.connections'
+to be 'opals.a' and so in the absence of specific instructions to the contrary
+(e.g. by specifiying a particular dataset to be used via the <datasources>
+argument) all subsequent function calls will be to the datasets held in opals.a.
+If the <datasources> argument is specified, it should be set without
+inverted commas: e.g. datasources=opals.a or datasources=default.connections.
+The <datasources> argument also allows you to apply a function solely to a subset
+of the studies/sources you are working with. For example, the second source
+in a set of three, can be specified using a call such as datasources=connection.xyz[2].
+On the other hand, if you wish to specify solely the first and third sources, the
+appropriate call will be datasources=connections.xyz[c(1,3)]}
 
 \item{notify.of.progress}{specifies if console output should be produced to indicate
 progress. Default FALSE.}
 }
 \value{
-\code{ds.dataFrameSubset} returns
-the object specified by the \code{newobj} argument
-which is written to the server-side. 
-Also, two validity messages are returned to the client-side indicating
-the name of the \code{newobj} which has been created in each data source
- and if it is in a valid form.
+the object specified by the <newobj> argument (or default name 'dfsubset').
+which is written to the serverside. In addition, two validity messages are returned
+indicating whether <newobj> has been created in each data source and if so whether
+it is in a valid form. If its form is not valid in at least one study - e.g. because
+a disclosure trap was tripped and creation of the full output object was blocked -
+ds.dataFrameSubset() returns helpful error messages which are generated by
+the first call to the serverside aggregate function dataFrameSubsetDS1.
 }
 \description{
-Subsets a data frame by rows and/or by columns.
+Subsets a data frame by: row (select rows defined on the basis of
+the values of one of the columns in the data.frame or of a separate variable);
+column (specify numbered columns to keep or drop);  or both.
 }
 \details{
-Subset a pre-existing data frame using the standard 
-set of Boolean operators (\code{==, !=, >, >=, <, <=}). 
-The  subsetting is made by rows, but it is also possible to select
-columns to keep or remove. Instead, if you
-wish to keep all rows in the subset (e.g. if the primary plan is to subset by columns
-and not by rows) the \code{V1.name} and \code{V2.name} parameters can be used 
-to specify a vector of the same length
-as the data frame to be subsetted in each study in which every element is 1 and 
-there are no missing values. For more information see the example 2 below. 
-
-Server functions called: \code{dataFrameSubsetDS1} and \code{dataFrameSubsetDS2}
+ds.dataFrameSubset calls a serverside aggregate function dataFrameSubsetDS1
+and then a serverside assign function dataFrameSubsetDS2. A data.frame is a
+list of variables all with the same number of rows,
+which is of class 'data.frame'. ds.dataFrameSubset will subset a
+pre-existing data.frame by specifying the values of a subsetting variable
+(subsetting by row) or by selecting columns to keep or remove (subsetting
+by column). When subsetting by row, the resultant subset must strictly be
+as large or larger than the disclosure trap value nfilter.subset. If you
+wish to keep all rows in the subset (e.g. if the primary plan is to subset by column
+not by row) then V1.name can be used to specify a vector of the same length
+as the data.frame to be subsetted in each study which consists entirely of 1s
+and there are no NAs. Then if V2 encodes the value 1 and the
+Boolean.operator is '==' then ALL rows will be kept in the generated subset.
+To achieve this you can easily generate your own vector of 1s and declare that
+vector as <V1.name>, then specify <V2.name> ='1' and Boolean.operator = '=='. But,
+as a simpler alternative if either <keep.cols> or <rm.cols> is non-null
+i.e. you are deliberately subsetting by column, if you declare <V1.name>, <V2.name>
+and <Boolean.operator> all to be NULL, then the dataFrameSubset function will
+create an internal vector of 1s called 'ONES' which is equal in length to
+to the number of rows in the data.frame in each source, will set both
+<V1.name> and <V2.name> to 'ONES', and <Boolean.operator> to '=='. This then has
+precisely the same effect.
 }
 \examples{
 \dontrun{
@@ -136,9 +183,9 @@ Server functions called: \code{dataFrameSubsetDS1} and \code{dataFrameSubsetDS2}
                      
   # Clear the Datashield R sessions and logout                 
   datashield.logout(connections) 
-  
-}   
+
+}
 }
 \author{
-DataSHIELD Development Team
+Paul Burton
 }
