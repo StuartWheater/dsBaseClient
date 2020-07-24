@@ -175,6 +175,11 @@ ds.Boole<-function(V1=NULL, V2=NULL, Boolean.operator=NULL, numeric.output=TRUE,
 # CALL THE MAIN SERVER SIDE FUNCTION
   calltext <- call("BooleDS", V1, V2, BO.n, na.assign,numeric.output)
   DSI::datashield.assign(datasources, newobj, calltext)
+  
+  errors <- DSI::datashield.errors()
+  if (! is.null(errors)) {
+      print(list(errors = errors))
+  }
 
 #############################################################################################################
 #DataSHIELD CLIENTSIDE MODULE: CHECK KEY DATA OBJECTS SUCCESSFULLY CREATED                                  #
