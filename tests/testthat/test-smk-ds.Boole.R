@@ -28,9 +28,10 @@ context("ds.Boole::smk")
 test_that("simple boole", {
     res <- ds.Boole("D$LAB_TSC", "D$LAB_TRIG", "==")
 
-    expect_length(res, 2)
-    expect_equal(res$is.object.created, "A data object <boole.newobj> has been created in all specified data sources")
-    expect_equal(res$validity.check, "<boole.newobj> appears valid in all sources")
+    expect_length(res, 3)
+    expect_equal(res$successful, TRUE)
+    expect_equal(res$outcome.message, "Success")
+    expect_length(res$studyside.messages, 0)
 })
 
 #
