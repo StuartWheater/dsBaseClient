@@ -11,8 +11,8 @@ init.ip.address()
   options(datashield.env=ds.test_env)
 
   # switch tetween "DSLiteDriver" and "OpalDriver" to test
-  # ds.test_env$driver <- "DSLiteDriver"
-  ds.test_env$driver <- "OpalDriver"
+  ds.test_env$driver <- "DSLiteDriver"
+  # ds.test_env$driver <- "OpalDriver"
 
   ds.test_env$server_ip_address <- init.ip.address()
   
