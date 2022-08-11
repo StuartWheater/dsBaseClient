@@ -45,12 +45,6 @@ resources:
     name: datashield/testStatus
     ref: master
 
-  - repository: datashield-infrastructureRepo
-    type: github
-    endpoint: datashield-testing
-    name: datashield/datashield-infrastructure
-    ref: v6.2.0
-
 #########################################################################################
 # When and under what condition to run the pipeline.
 schedules:
@@ -82,9 +76,6 @@ jobs:
     # This is an Azure bug - https://github.com/microsoft/azure-pipelines-yaml/issues/403
   - checkout: self
     path: 'dsBaseClient'
-
-  - checkout: datashield-infrastructureRepo
-    path: 'datashield-infrastructure'
 
   - checkout: testStatusRepo
     path: 'testStatus'
