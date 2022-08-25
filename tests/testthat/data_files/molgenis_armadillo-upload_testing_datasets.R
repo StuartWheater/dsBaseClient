@@ -31,9 +31,9 @@ upload_testing_dataset_table('datashield', 'cnsim', 'CNSIM1', 'CNSIM/CNSIM1.rda'
 upload_testing_dataset_table('datashield', 'cnsim', 'CNSIM2', 'CNSIM/CNSIM2.rda')
 upload_testing_dataset_table('datashield', 'cnsim', 'CNSIM3', 'CNSIM/CNSIM3.rda')
 
-upload_testing_dataset_table('datashield', 'dasim', 'DASIM1', 'DASIM/DASIM3.rda')
-upload_testing_dataset_table('datashield', 'dasim', 'DASIM2', 'DASIM/DASIM1.rda')
-upload_testing_dataset_table('datashield', 'dasim', 'DASIM3', 'DASIM/DASIM2.rda')
+upload_testing_dataset_table('datashield', 'dasim', 'DASIM1', 'DASIM/DASIM1.rda')
+upload_testing_dataset_table('datashield', 'dasim', 'DASIM2', 'DASIM/DASIM2.rda')
+upload_testing_dataset_table('datashield', 'dasim', 'DASIM3', 'DASIM/DASIM3.rda')
 
 upload_testing_dataset_table('datashield', 'discordant', 'DISCORDANT_STUDY1', 'DISCORDANT/DISCORDANT_STUDY1.rda')
 upload_testing_dataset_table('datashield', 'discordant', 'DISCORDANT_STUDY2', 'DISCORDANT/DISCORDANT_STUDY2.rda')
@@ -64,3 +64,4 @@ upload_testing_dataset_table('datashield', 'testing', 'DATASET2', 'TESTING/DATAS
 upload_testing_dataset_table('datashield', 'testing', 'DATASET3', 'TESTING/DATASET3.rda')
 
 print(MolgenisArmadillo::armadillo.list_tables('datashield'))
+
