@@ -4,21 +4,23 @@ services:
         ports:
             - 8443:8443
         links:
-            - mongo
+            - mysql
             - rock
         environment:
             - OPAL_ADMINISTRATOR_PASSWORD=datashield_test&
-            - MONGO_HOST=mongo
-            - MONGO_PORT=27017
-            - MONGO_USER=root
-            - MONGO_PASSWORD=foobar
+            - MYSQLDATA_HOST=mysql
+            - MYSQLDATA_DATABASE=opal
+            - MYSQLDATA_USER=datashield
+            - MYSQLDATA_PASSWORD=datashield
             - ROCK_HOSTS=rock:8085
             - ROCK_ADMINISTRATOR_PASSWORD=foobar
-    mongo:
-        image: mongo:4.4.15
+    mysql:
+        image: mysql:5.7.44
         environment:
-            - MONGO_INITDB_ROOT_USERNAME=root
-            - MONGO_INITDB_ROOT_PASSWORD=foobar
+            - MYSQL_DATABASE=opal
+            - MYSQL_USER=datashield
+            - MYSQL_PASSWORD=datashield
+            - MYSQL_RANDOM_ROOT_PASSWORD=yes
     rock:
         image: datashield/rock-omicron-karma-permissive:devel
         environment:
