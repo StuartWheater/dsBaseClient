@@ -8,7 +8,7 @@ library(tibble)
 
 upload_testing_dataset_table <- function(opal, project_name, table_name, local_file_path) {
     if (! opal.project_exists(opal, project_name))
-        opal.project_create(opal, project_name, database = "mysqldb")
+        opal.project_create(opal, project_name, database = "mongodb")
   
     dataset_name <- load(file = local_file_path)
     dataset      <- eval(as.symbol(dataset_name))
