@@ -82,7 +82,12 @@ test_that("mice, second imputation", {
   expect_length(newImp$sim2, 3)
   expect_length(newImp$sim3, 3)
   expect_true("character" %in% class(newImp$sim1$method))
-  expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","","polyreg"))
+  if (ds.test_env$driver == "OpalDriver")
+      expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","","polyreg"))
+  else if (ds.test_env$driver == "ArmadilloDriver")
+      expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","",""))
+  else
+      expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","","polyreg"))
   expect_true("matrix" %in% class(newImp$sim1$predictorMatrix))
   expect_true("array" %in% class(newImp$sim1$predictorMatrix))
   expect_equal(as.numeric(newImp$sim1$predictorMatrix[,1]), c(0,1,1,1,1,1,1,1,1,1,1))
