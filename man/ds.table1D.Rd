@@ -14,16 +14,16 @@ ds.table1D(
 \arguments{
 \item{x}{a character, the name of a numerical vector with discrete values - usually a factor.}
 
-\item{type}{a character which represent the type of table to ouput: pooled table or one table for each
+\item{type}{a character which represent the type of table to output: pooled table or one table for each
 data source. If \code{type} is set to 'combine', a pooled 1-dimensional table is returned; if If \code{type}
 is set to 'split' a 1-dimensional table is returned for each data source.}
 
-\item{warningMessage}{a boolean, if set to TRUE (deafult) a warning is displayed if any returned table is invalid. Warning
+\item{warningMessage}{a boolean, if set to TRUE (default) a warning is displayed if any returned table is invalid. Warning
 messages are suppressed if this parameter is set to FALSE. However the analyst can still view 'validity' information
 which are stored in the output object 'validity' - see the list of output objects.}
 
-\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login. If the <datasources>
-the default set of connections will be used: see \link{datashield.connections_default}.}
+\item{datasources}{a list of \code{\link[DSI]{DSConnection-class}} objects obtained after login. If the <datasources>
+the default set of connections will be used: see \link[DSI]{datashield.connections_default}.}
 }
 \value{
 A list object containing the following items:

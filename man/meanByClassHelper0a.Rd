@@ -13,10 +13,10 @@ meanByClassHelper0a(a, b, type, datasources)
 
 \item{type}{a character which represents the type of analysis to carry out. If \code{type} is set to
 'combine', a pooled table of results is generated. If \code{type} is set to 'split', a table of results
-is genrated for each study.}
+is generated for each study.}
 
-\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login. If the <datasources>
-the default set of connections will be used: see \link{datashield.connections_default}.}
+\item{datasources}{a list of \code{\link[DSI]{DSConnection-class}} objects obtained after login. If the <datasources>
+the default set of connections will be used: see \link[DSI]{datashield.connections_default}.}
 }
 \value{
 a table or a list of tables that hold the length of the numeric variable and its mean

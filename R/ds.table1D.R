@@ -10,14 +10,14 @@
 #' count. This way it is possible the know the total count and combine total counts across data sources but it
 #' is not possible to identify the cell(s) that had the small counts which render the table invalid.
 #' @param x a character, the name of a numerical vector with discrete values - usually a factor.
-#' @param type a character which represent the type of table to ouput: pooled table or one table for each
+#' @param type a character which represent the type of table to output: pooled table or one table for each
 #' data source. If \code{type} is set to 'combine', a pooled 1-dimensional table is returned; if If \code{type}
 #' is set to 'split' a 1-dimensional table is returned for each data source.
-#' @param warningMessage a boolean, if set to TRUE (deafult) a warning is displayed if any returned table is invalid. Warning
+#' @param warningMessage a boolean, if set to TRUE (default) a warning is displayed if any returned table is invalid. Warning
 #' messages are suppressed if this parameter is set to FALSE. However the analyst can still view 'validity' information
 #' which are stored in the output object 'validity' - see the list of output objects.
-#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login. If the <datasources>
-#' the default set of connections will be used: see \link{datashield.connections_default}.
+#' @param datasources a list of \code{\link[DSI]{DSConnection-class}} objects obtained after login. If the <datasources>
+#' the default set of connections will be used: see \link[DSI]{datashield.connections_default}.
 #' @return A list object containing the following items:
 #' \item{counts}{ table(s) that hold counts for each level/category. If some cells counts are invalid (see 'Details'
 #' section) only the total (outer) cell counts are displayed in the returned individual study tables or in the pooled

@@ -17,7 +17,7 @@
 #' 
 #' Many GLMs can be fitted very simply using a formula such as:
 #' 
-#' \deqn{y~a+b+c+d} 
+#' \eqn{y~a+b+c+d}
 #' 
 #' which simply means fit a GLM with \code{y} as the outcome variable and 
 #' \code{a}, \code{b}, \code{c} and \code{d} as covariates. 
@@ -26,7 +26,7 @@
 #' Instead, if you need to fit a more complex
 #' model, for example:
 #' 
-#'  \deqn{EVENT~1+TID+SEXF*AGE.60}
+#'  \eqn{EVENT~1+TID+SEXF*AGE.60}
 #'
 #' In the above model the outcome variable is \code{EVENT} 
 #' and the  covariates 
@@ -46,7 +46,7 @@
 #' 
 #' In the \code{family} argument can be specified three types of models to fit:
 #' 
-#'  \itemize{
+#'  \describe{
 #'    \item{\code{"gaussian"}}{: conventional linear model with normally distributed errors} 
 #'    \item{\code{"binomial"}}{: conventional unconditional logistic regression model}
 #'    \item{\code{"poisson"}}{: Poisson regression model which is the most used in survival analysis. 
@@ -63,7 +63,7 @@
 #' The \code{data} argument avoids you having to specify the name of the
 #' data frame in front of each covariate in the formula. 
 #' For example, if the data frame is called \code{DataFrame} you
-#' avoid having to write: \eqn{DataFrame$y~DataFrame$a+DataFrame$b+DataFrame$c+DataFrame$d}
+#' avoid having to write: \eqn{DataFrame\$y ~ DataFrame\$a + DataFrame\$b + DataFrame\$c + DataFrame\$d}
 #' 
 #' The \code{checks} argument verifies that the variables in the model are all defined (exist) 
 #' on the server-side at every study
@@ -164,9 +164,9 @@
 #' of parameter estimates is returned. Default FALSE. 
 #' @param viewCor logical. If TRUE the correlation matrix of
 #' parameter estimates is returned. Default FALSE.
-#' @param datasources a list of \code{\link{DSConnection-class}} objects obtained after login. 
+#' @param datasources a list of \code{\link[DSI]{DSConnection-class}} objects obtained after login. 
 #' If the \code{datasources} argument is not specified
-#' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
+#' the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
 #' @return Many of the elements of the output list returned by \code{ds.glm} are 
 #' equivalent to those returned by the \code{glm()} function in native R. However,
 #' potentially disclosive elements
@@ -190,7 +190,7 @@
 #' @return \code{family}: error family and link function.
 #' @return \code{formula}: model formula, see description of formula as an input parameter (above).
 #' @return \code{coefficients}: a matrix with 5 columns:
-#'    \itemize{
+#'    \describe{
 #'    \item{First}{: the names of all of the regression parameters (coefficients) in the model}
 #'    \item{second}{: the estimated values}
 #'    \item{third}{: corresponding standard errors of the estimated values}

@@ -46,9 +46,9 @@ plot. The \code{vertical.axis} argument can be set as \code{'Frequency'} or \cod
 Default \code{'Frequency'}. 
 For more information see \strong{Details}.}
 
-\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login. 
+\item{datasources}{a list of \code{\link[DSI]{DSConnection-class}} objects obtained after login. 
 If the \code{datasources} argument is not specified
-the default set of connections will be used: see \code{\link{datashield.connections_default}}.}
+the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.}
 }
 \value{
 one or more histogram objects and plots depending on the argument \code{type}
@@ -62,13 +62,13 @@ distinct histograms (one for each study) or a combined histogram that merges
 the single plots.
 
 In the argument \code{type} can be specified two types of graphics to display:
- \itemize{
+ \describe{
    \item{\code{'combine'}}{: a histogram that merges the single plot is displayed.} 
    \item{\code{'split'}}{: each histogram is plotted separately.}
     }
     
 In the argument \code{method} can be specified 3 different histograms to be created:
- \itemize{
+ \describe{
    \item{\code{'smallCellsRule'}}{: the histogram of the actual variable is
           created but bins with low counts are removed.} 
    \item{\code{'deterministic'}}{: the histogram of the scaled centroids of each 
@@ -104,7 +104,7 @@ than the pre-specified threshold \code{'nfilter.noise'}.
 By default the value of noise is set to be equal to 0.25.
 
 In the argument  \code{vertical.axis} can be specified two types of histograms:
-\itemize{
+\describe{
    \item{\code{'Frequency'}}{: the histogram of the frequencies
     is returned.} 
    \item{\code{'Density'}}{: the histogram of the densities

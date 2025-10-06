@@ -18,13 +18,13 @@
 #' intervals along x or a vector of numbers in (0; 1) specifying the quantiles explicitly.
 #' @param na.rm logical, whether NA should be removed when calculating quantiles, passed
 #' to na.rm of quantile. Default set to TRUE
-#' @param marginal logical, how to parametrize the spline, see Details
+#' @param marginal logical, how to parametrise the spline, see Details
 #' @param names character, vector of names for constructed variables
 #' @param newobj a character string that provides the name for the output 
 #' variable that is stored on the data servers. Default \code{qlspline.newobj}. 
-#' @param datasources a list of \code{\link{DSConnection-class}} 
+#' @param datasources a list of \code{\link[DSI]{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
-#' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
+#' the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
 #' @return an object of class "lspline" and "matrix", which its name is specified by the
 #' \code{newobj} argument (or its default name "qlspline.newobj"), is assigned on the serverside.
 #' @author Demetris Avraam for DataSHIELD Development Team

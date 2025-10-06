@@ -13,7 +13,7 @@ ds.ls(
 }
 \arguments{
 \item{search.filter}{character string (potentially including \code{*} symbol) specifying the filter 
-for the object name that you want to find in the enviroment. For more information see \strong{Details}.}
+for the object name that you want to find in the environment. For more information see \strong{Details}.}
 
 \item{env.to.search}{an integer (e.g. in \code{2} or \code{2L} format) specifying the position
 in the search path of the environment to be explored. \code{1L} is the current active analytic
@@ -26,9 +26,9 @@ set as a valid integer, \code{ds.ls} will list all objects in the server-side R 
 identified by \code{env.to.search} in the search path. 
 For more information see \strong{Details}.}
 
-\item{datasources}{a list of \code{\link{DSConnection-class}} 
+\item{datasources}{a list of \code{\link[DSI]{DSConnection-class}} 
 objects obtained after login. If the \code{datasources} argument is not specified
-the default set of connections will be used: see \code{\link{datashield.connections_default}}.}
+the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.}
 }
 \value{
 \code{ds.ls} returns to the client-side a list containing: \cr

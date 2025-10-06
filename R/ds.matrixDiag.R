@@ -37,7 +37,7 @@
 #' Server function called: \code{matrixDiagDS}
 #' @param x1 a character string specifying
 #' the name of a server-side scalar or vector. Also, a numeric value or vector
-#' specified from the client-side can be speficied. This argument depends 
+#' specified from the client-side can be specified. This argument depends 
 #' on the value specified in \code{aim}.
 #' For more information see \strong{Details}. 
 #' @param aim a character string specifying the behaviour of the function.
@@ -53,9 +53,9 @@
 #' For more information see \strong{Details}. 
 #' @param newobj a character string that provides the name for the output 
 #' variable that is stored on the data servers. Default \code{matrixdiag.newobj}.
-#' @param datasources a list of \code{\link{DSConnection-class}} 
+#' @param datasources a list of \code{\link[DSI]{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
-#' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
+#' the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
 #' @return \code{ds.matrixDiag} returns to the server-side the square matrix diagonal. 
 #' Also, two validity messages are returned
 #' indicating whether the new object has been created in each data source and if so whether

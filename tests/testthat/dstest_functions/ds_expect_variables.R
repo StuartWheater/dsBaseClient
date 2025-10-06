@@ -12,11 +12,10 @@
 # Tests
 #
 
-ds_expect_variables <- function(expected.variables)
-{
-    studies.current.varables <- ds.ls()
+ds_expect_variables <- function(expected.variables) {
+    studies.current.variables <- ds.ls()
 
-    for (study.current.varables in studies.current.varables) {
-        expect_setequal(study.current.varables$objects.found, expected.variables)
+    for (study.current.variables in studies.current.variables) {
+        expect_setequal(study.current.variables$objects.found, expected.variables)
     }
 }

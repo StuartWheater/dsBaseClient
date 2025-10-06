@@ -27,7 +27,7 @@
 #' 
 #' @param mdata a character string specifying
 #' the name of a server-side scalar or vector. Also, a numeric value representing a
-#' scalar specified from the client-side can be speficied. 
+#' scalar specified from the client-side can be specified 
 #' Zeros, negative values and NAs are all allowed.
 #' For more information see \strong{Details}. 
 #' @param from a character string specifying the source and nature of \code{mdata}.
@@ -45,9 +45,9 @@
 #' the row and column names respectively.
 #' @param newobj a character string that provides the name for the output 
 #' variable that is stored on the data servers. Default \code{matrix.newobj}. 
-#' @param datasources a list of \code{\link{DSConnection-class}} 
+#' @param datasources a list of \code{\link[DSI]{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
-#' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
+#' the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
 #' @return \code{ds.matrix} returns the created matrix which is written on the server-side. 
 #' In addition, two validity messages are returned
 #' indicating whether the new matrix has been created in each data source and if so whether

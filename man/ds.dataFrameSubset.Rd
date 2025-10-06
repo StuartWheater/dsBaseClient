@@ -18,7 +18,7 @@ ds.dataFrameSubset(
 )
 }
 \arguments{
-\item{df.name}{a character string providing the name of the data frame to be subseted.}
+\item{df.name}{a character string providing the name of the data frame to be subset.}
 
 \item{V1.name}{A character string specifying the name of the vector 
 to which the Boolean operator is to be applied to define the subset.
@@ -42,9 +42,9 @@ If FALSE or NULL all rows with at least one missing values are removed from the 
 \item{newobj}{a character string that provides the name for the output 
 object that is stored on the data servers. Default \code{dataframesubset.newobj}.}
 
-\item{datasources}{a list of \code{\link{DSConnection-class}} objects obtained after login.
+\item{datasources}{a list of \code{\link[DSI]{DSConnection-class}} objects obtained after login.
 If the \code{datasources}
-the default set of connections will be used: see \code{\link{datashield.connections_default}}.}
+the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.}
 
 \item{notify.of.progress}{specifies if console output should be produced to indicate
 progress. Default FALSE.}

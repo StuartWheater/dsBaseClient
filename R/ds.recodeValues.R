@@ -4,7 +4,7 @@
 #' @details This function recodes individual values with new individual values. This can
 #' apply to numeric and character values, factor levels and NAs. One particular use of
 #' \code{ds.recodeValues} is to convert NAs to an explicit value. This value is specified
-#' in the argument \code{missing}. If tthe user want to recode only missing values, then it
+#' in the argument \code{missing}. If the user want to recode only missing values, then it
 #' should also specify an identical vector of values in both arguments \code{values2replace.vector}
 #' and \code{new.values.vector} (see Example 2 below).
 #' Server function called: \code{recodeValuesDS}
@@ -19,9 +19,9 @@
 #' @param newobj a character string that provides the name for the output object
 #' that is stored on the data servers.
 #' Default \code{recodevalues.newobj}. 
-#' @param datasources a list of \code{\link{DSConnection-class}} 
+#' @param datasources a list of \code{\link[DSI]{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
-#' the default set of connections will be used: see \code{\link{datashield.connections_default}}.
+#' the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
 #' @param notify.of.progress logical. If TRUE console output should be produced to indicate
 #' progress. Default FALSE.
 #' @return Assigns to each server a new variable with the recoded values. 
