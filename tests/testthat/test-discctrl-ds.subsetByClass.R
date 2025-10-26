@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("ds.subsetByClass::discctrl::setup")
+# context("ds.subsetByClass::discctrl::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TSC", "GENDER"))
 
@@ -23,7 +24,7 @@ test_that("setup", {
 #
 # Tests
 #
-context("ds.subsetByClass::discctrl")
+# context("ds.subsetByClass::discctrl")
 test_that("simple subsetByClass", {
     expect_error(expect_warning(ds.subsetByClass(x='D', subsets='subclasses1'), "", fixed = TRUE), "There are some DataSHIELD errors, list them with datashield.errors()", fixed = TRUE)
     
@@ -42,7 +43,7 @@ test_that("simple subsetByClass", {
 # Done
 #
 
-context("ds.subsetByClass::discctrl::shutdown")
+# context("ds.subsetByClass::discctrl::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D"))
@@ -50,4 +51,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-context("ds.subsetByClass::discctrl::done")
+# context("ds.subsetByClass::discctrl::done")

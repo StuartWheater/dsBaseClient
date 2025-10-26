@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("ds.qlspline::smk::setup")
+# context("ds.qlspline::smk::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TRIG", "PM_BMI_CONTINUOUS"))
 
@@ -24,7 +25,7 @@ test_that("setup", {
 # Tests
 #
 
-context("ds.qlspline::smk::test1")
+# context("ds.qlspline::smk::test1")
 test_that("qlspline", {
    
     ds.qlspline(x="D$PM_BMI_CONTINUOUS", q=4, na.rm=TRUE, newobj="qlsplineDS", datasources=ds.test_env$connections)
@@ -76,7 +77,7 @@ test_that("qlspline", {
 })
 
 
-context("ds.qlspline::smk::test2")
+# context("ds.qlspline::smk::test2")
 test_that("qlspline", {
     
     ds.qlspline(x="D$PM_BMI_CONTINUOUS", q=c(0.3,0.6), na.rm=TRUE, newobj="qlsplineDS2", datasources=ds.test_env$connections)
@@ -130,7 +131,7 @@ test_that("qlspline", {
 # Done
 #
 
-context("ds.qlspline::smk::shutdown")
+# context("ds.qlspline::smk::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D", "LAB_TRIG", "qlsplineDS", "qlsplineDS2"))
@@ -138,4 +139,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-context("ds.qlspline::smk::done")
+# context("ds.qlspline::smk::done")

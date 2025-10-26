@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2018-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #  
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("ds.subsetByClass::smk::setup")
+# context("ds.subsetByClass::smk::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TSC", "GENDER"))
 
@@ -24,7 +25,7 @@ test_that("setup", {
 # Tests
 #
 
-context("ds.subsetByClass::smk")
+# context("ds.subsetByClass::smk")
 test_that("gender implicit", {
     res <- ds.subsetByClass(x='D', subsets='subclasses1')
 
@@ -67,7 +68,7 @@ test_that("gender explicit", {
 # Tear down
 #
 
-context("ds.subsetByClass::smk::shutdown")
+# context("ds.subsetByClass::smk::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D", "subclasses1", "subclasses2"))
@@ -75,4 +76,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-context("ds.subsetByClass::smk::done")
+# context("ds.subsetByClass::smk::done")

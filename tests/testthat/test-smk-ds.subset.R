@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2018-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #  
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("ds.subset::smk::setup")
+# context("ds.subset::smk::setup")
 
 connect.studies.dataset.cnsim(list("DIS_DIAB","PM_BMI_CONTINUOUS","LAB_HDL", "GENDER"))
 
@@ -24,7 +25,7 @@ test_that("setup", {
 # Tests
 #
 
-context("ds.subset::smk::generate a subset of the assigned table (by default the table is named 'D') with the first 50 observations and the two first columns")
+# context("ds.subset::smk::generate a subset of the assigned table (by default the table is named 'D') with the first 50 observations and the two first columns")
 ds.subset(datasources=ds.test_env$connections, subset='subD', x='D', rows=c(1:50), cols=c(1,2))
 res <- ds.exists('subD')
 test_that("subD_exists", {
@@ -34,7 +35,7 @@ test_that("subD_exists", {
     expect_true(res$sim3)
 })
 
-context("ds.subset::smk::generate a subset of the assigned table (by default the table is named 'D') with the first 50 observations and the two first columns referred to by their names")
+# context("ds.subset::smk::generate a subset of the assigned table (by default the table is named 'D') with the first 50 observations and the two first columns referred to by their names")
 ds.subset(subset='subD2', x='D', rows=c(1:50), cols = c('DIS_DIAB','PM_BMI_CONTINUOUS'))
 res <- ds.exists('subD2')
 test_that("subD2_exists", {
@@ -44,7 +45,7 @@ test_that("subD2_exists", {
     expect_true(res$sim3)
 })
 
-context("ds.subset::smk::generate a subset of the table D with bmi values greater than or equal to 25.")
+# context("ds.subset::smk::generate a subset of the table D with bmi values greater than or equal to 25.")
 ds.subset(datasources=ds.test_env$connections, subset='subD3', x='D', logical='PM_BMI_CONTINUOUS>=', threshold=25)
 res <- ds.exists('subD3')
 test_that("subD3_exists", {
@@ -80,7 +81,7 @@ test_that("subD3_exists", {
 # Tear down
 #
 
-context("ds.subset::smk::shutdown")
+# context("ds.subset::smk::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D", "subD", "subD2", "subD3"))
@@ -88,4 +89,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-context("ds.subset::smk::done")
+# context("ds.subset::smk::done")
