@@ -15,7 +15,7 @@
 
 # context("isDefined::smk::setup")
 
-# connect.discordant.dataset.simple(list("A", "B", "C"))
+connect.discordant.dataset.simple(list("A", "B", "C"))
 
 test_that("setup", {
     ds_expect_variables(c("D"))
