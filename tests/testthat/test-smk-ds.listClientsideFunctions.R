@@ -1,6 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
-# Copyright (c) 2022 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -13,7 +13,7 @@
 # Set up
 #
 
-context("ds.listClientsideFunctions::smk::setup")
+# context("ds.listClientsideFunctions::smk::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TSC", "LAB_HDL"))
 
@@ -25,7 +25,7 @@ test_that("setup", {
 # Tests
 #
 
-context("ds.listClientsideFunctions::smk::check results")
+# context("ds.listClientsideFunctions::smk::check results")
 test_that("check results", {
     output <- list(
         "ds.abs",
@@ -152,7 +152,7 @@ test_that("check results", {
 # Done
 #
 
-context("ds.listClientsideFunctions::smk::shutdown")
+# context("ds.listClientsideFunctions::smk::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D"))
@@ -160,4 +160,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-context("ds.listClientsideFunctions::smk::done")
+# context("ds.listClientsideFunctions::smk::done")

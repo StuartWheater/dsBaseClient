@@ -23,8 +23,8 @@ And the development version from
 install.packages("remotes")
 remotes::install_github("datashield/dsBaseClient", "<BRANCH>")
 
-# Install v6.3.4 with the following
-remotes::install_github("datashield/dsBaseClient", "6.3.4")
+# Install v6.3.5 with the following
+remotes::install_github("datashield/dsBaseClient", "6.3.5")
 ```
 
 For a full list of development branches, checkout https://github.com/datashield/dsBaseClient/branches
@@ -50,7 +50,7 @@ The code here is organised as:
 
 [1] Burton P, Wilson R, Butters O, Ryser-Welch P, Westerberg A, Abarrategui L, Villegas-Diaz R,
   Avraam D, Marcon Y, Bishop T, Gaye A, Escribà Montagut X, Wheater S (2025). 
-  _dsBaseClient: 'DataSHIELD' Client Side Base Functions_. R package version 6.3.4.
+  _dsBaseClient: 'DataSHIELD' Client Side Base Functions_. R package version 6.3.5.
 
 [2] Gaye A, Marcon Y, Isaeva J, LaFlamme P, Turner A, Jones E, Minion J, Boyd A, Newby C, Nuotio
   M, Wilson R, Butters O, Murtagh B, Demir I, Doiron D, Giepmans L, Wallace S, Budin-Ljøsne I,
