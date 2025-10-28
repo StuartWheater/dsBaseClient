@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("ds.completeCases::smk::setup")
+# context("ds.completeCases::smk::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TSC", "LAB_TRIG", "LAB_HDL", "LAB_GLUC_ADJUSTED", "PM_BMI_CONTINUOUS", "DIS_CVA", "MEDI_LPD", "DIS_DIAB", "DIS_AMI", "GENDER", "PM_BMI_CATEGORICAL"))
 
@@ -24,7 +25,7 @@ test_that("setup", {
 # Tests
 #
 
-context("ds.completeCases::smk::data.frame")
+# context("ds.completeCases::smk::data.frame")
 test_that("completeCases data.frame", {
     ds.dataFrame(c("D$LAB_TSC", "D$LAB_TRIG", "D$LAB_HDL", "D$LAB_GLUC_ADJUSTED", "D$PM_BMI_CONTINUOUS", "D$DIS_CVA", "D$MEDI_LPD", "D$DIS_DIAB", "D$DIS_AMI", "D$GENDER", "D$PM_BMI_CATEGORICAL"), newobj="df")
 
@@ -81,7 +82,7 @@ test_that("completeCases data.frame", {
     expect_equal(res.df_new.dim$`dimensions of df_new in combined studies`[2], 11)
 })
 
-context("ds.completeCases::smk::matrix")
+# context("ds.completeCases::smk::matrix")
 test_that("completeCases matrix", {
     ds.asDataMatrix("D", newobj="mat")
 
@@ -148,7 +149,7 @@ test_that("completeCases matrix", {
 # Done
 #
 
-context("ds.completeCases::smk::shutdown")
+# context("ds.completeCases::smk::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D", "df", "df_new", "mat", "mat_new"))
@@ -156,4 +157,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-context("ds.completeCases::smk::done")
+# context("ds.completeCases::smk::done")
