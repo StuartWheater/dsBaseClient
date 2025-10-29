@@ -25,6 +25,7 @@ test_that("setup", {
 # Tests
 #
 
+options(datashield.errors.print = TRUE)
 # context("ds.colnames::smk")
 test_that("simple colnames", {
     myvectors <- c("D$LAB_TSC", "D$LAB_TRIG")
@@ -42,6 +43,22 @@ test_that("simple colnames", {
     expect_length(res$sim3, 2)
     expect_equal(res$sim3[1], "LAB_TSC")
     expect_equal(res$sim3[2], "LAB_TRIG")
+})
+
+test_that("fails if the object does not exist", {
+  expect_error(
+    ds.colnames("non_existing_df"),
+    regexp = "'non_existing_df' does not exist",
+    ignore.case = TRUE
+  )
+})
+
+test_that("fails if object is not a data frame or matrix", {
+  expect_error(
+    ds.colnames("D$LAB_TSC"),
+    regexp = "must be of type data.frame or matrix",
+    ignore.case = TRUE
+  )
 })
 
 #
