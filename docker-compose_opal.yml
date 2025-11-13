@@ -20,6 +20,6 @@ services:
             - MONGO_INITDB_ROOT_USERNAME=root
             - MONGO_INITDB_ROOT_PASSWORD=foobar
     rock:
-        image: datashield/rock-lemon-donkey-permissive:draft
+        image: datashield/rock-quebrada-lamda-permissive:draft
         environment:
             DEBUG: "FALSE"

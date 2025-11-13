@@ -14,7 +14,7 @@ armadillo:
   # oidc-admin-user: user@yourdomain.org
   profiles:
     - name: default
-      image: datashield/rock-panda-matilda:latest
+      image: datashield/rock-quebrada-lamda-permissive:latest
       port: 8085
       host: default
       package-whitelist: # Packages for 'permissive'

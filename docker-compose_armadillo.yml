@@ -16,7 +16,7 @@ services:
 
     default:
         hostname: default
-        image: datashield/rock-panda-matilda:latest
+        image: datashield/rock-quebrada-lamda:latest
 #        image: datashield/rserver-panda-lamda:devel
         environment:
             DEBUG: "FALSE"
