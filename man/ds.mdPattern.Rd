@@ -20,14 +20,14 @@ connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
 }
 \value{
 For type='split': A list with one element per study, each containing:
-\itemize{
+\describe{
   \item{pattern}{The missing data pattern matrix for that study}
   \item{valid}{Logical indicating if all patterns meet disclosure requirements}
   \item{message}{A message describing the validity status}
 }
 
 For type='combine': A list containing:
-\itemize{
+\describe{
   \item{pattern}{The pooled missing data pattern matrix across all studies}
   \item{valid}{Logical indicating if all pooled patterns meet disclosure requirements}
   \item{message}{A message describing the validity status}
