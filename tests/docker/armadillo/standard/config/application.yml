@@ -14,17 +14,11 @@ armadillo:
   # oidc-admin-user: user@yourdomain.org
   profiles:
     - name: default
-      image: datashield/rock-omicron-karma:devel
+      image: datashield/rock-quebrada-lamda-permissive:latest
       port: 8085
       host: default
       package-whitelist: # Packages for 'permissive'
         - dsBase
-        - dsMediation
-        - dsMTLBase
-        - dsSurvival
-        - dsTidyverse
-        - dsExposome
-        - dsOmics
         - resourcer
       function-blacklist: [ ]
       options:
