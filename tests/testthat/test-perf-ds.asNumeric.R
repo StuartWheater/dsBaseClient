@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Copyright (c) 2024 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2024-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,14 +12,14 @@
 # Set up
 #
 
-context("ds.asNumeric::perf::setup")
+# context("ds.asNumeric::perf::setup")
 connect.studies.dataset.cnsim(list("GENDER"))
 
 #
 # Tests
 #
 
-context("ds.asNumeric::perf:0")
+# context("ds.asNumeric::perf:0")
 test_that("combine - performance", {
     .durationSec  <- 30 # seconds
     .count        <- 0
@@ -54,6 +54,6 @@ test_that("combine - performance", {
 # Done
 #
 
-context("ds.asNumeric::perf::shutdown")
+# context("ds.asNumeric::perf::shutdown")
 disconnect.studies.dataset.cnsim()
-context("ds.asNumeric::perf::done")
+# context("ds.asNumeric::perf::done")

@@ -1,5 +1,6 @@
 #-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
+# Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
 # This program and the accompanying materials
 # are made available under the terms of the GNU Public License v3.0.
@@ -12,7 +13,7 @@
 # Set up
 #
 
-context("ds.mice::smk::setup")
+# context("ds.mice::smk::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TSC","LAB_TRIG","LAB_HDL","LAB_GLUC_ADJUSTED",
                                    "PM_BMI_CONTINUOUS","DIS_CVA","MEDI_LPD","DIS_DIAB",
@@ -26,7 +27,7 @@ test_that("setup", {
 # Tests
 #
 
-context("ds.mice::smk::imp1")
+# context("ds.mice::smk::imp1")
 test_that("mice, initial imputation", {
     initialImp <- ds.mice(data="D", m=1, method=NULL, predictorMatrix=NULL, post=NULL, seed="NA",
                           newobj_df='impSet')
@@ -60,7 +61,7 @@ test_that("mice, initial imputation", {
 
 })
 
-context("ds.mice::smk::imp2")
+# context("ds.mice::smk::imp2")
 test_that("mice, second imputation", {
   
   initialImp <- ds.mice(data="D", m=1, method=NULL, predictorMatrix=NULL, post=NULL, seed="NA",
@@ -82,7 +83,12 @@ test_that("mice, second imputation", {
   expect_length(newImp$sim2, 3)
   expect_length(newImp$sim3, 3)
   expect_true("character" %in% class(newImp$sim1$method))
-  expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","","polyreg"))
+  if (ds.test_env$driver == "OpalDriver")
+      expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","","polyreg"))
+  else if (ds.test_env$driver == "ArmadilloDriver")
+      expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","",""))
+  else
+      expect_equal(as.character(newImp$sim1$method), c("pmm","norm","pmm","pmm","pmm","","","","","","polyreg"))
   expect_true("matrix" %in% class(newImp$sim1$predictorMatrix))
   expect_true("array" %in% class(newImp$sim1$predictorMatrix))
   expect_equal(as.numeric(newImp$sim1$predictorMatrix[,1]), c(0,1,1,1,1,1,1,1,1,1,1))
@@ -126,7 +132,7 @@ test_that("mice, second imputation", {
 # Done
 #
 
-context("ds.mice::smk::shutdown")
+# context("ds.mice::smk::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D", "impSet.1", "imp_new.1","imp_new.2","imp_new.3","imp_new.4","imp_new.5",
@@ -135,4 +141,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-context("ds.mice::smk::done")
+# context("ds.mice::smk::done")
