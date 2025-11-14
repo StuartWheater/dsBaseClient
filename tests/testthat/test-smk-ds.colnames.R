@@ -47,18 +47,21 @@ test_that("simple colnames", {
 test_that("fails if the object does not exist", {
   expect_error(
     ds.colnames("non_existing_df"),
-    regexp = "'non_existing_df' does not exist",
+    regexp = "There are some DataSHIELD errors, list them with datashield.error()",
     ignore.case = TRUE
   )
 })
 
-test_that("fails if object is not a data frame or matrix", {
-  expect_error(
-    ds.colnames("D$LAB_TSC"),
-    regexp = "must be of type data.frame or matrix",
-    ignore.case = TRUE
-  )
-})
+###########################################
+###     Remote checks not performed     ###
+###########################################
+# test_that("fails if object is not a data frame or matrix", {
+#   expect_error(
+#     ds.colnames("D$LAB_TSC"),
+#     regexp = "must be of type data.frame or matrix",
+#     ignore.case = TRUE
+#   )
+# })
 
 #
 # Done
