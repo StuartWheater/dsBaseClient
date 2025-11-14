@@ -25,7 +25,6 @@ test_that("setup", {
 # Tests
 #
 
-options(datashield.errors.print = TRUE)
 # context("ds.colnames::smk")
 test_that("simple colnames", {
     myvectors <- c("D$LAB_TSC", "D$LAB_TRIG")
