@@ -42,7 +42,7 @@ test_that("continous, without NAs, all positive", {
 })
 
 # context("ds.ranksSecure::smk_expt::continous, without NAs, with negative")
-# test_that("continous, without NAs, with negative", {
+test_that("continous, without NAs, with negative", {
 #     res.cc <- ds.completeCases("D$LAB_TRIG", newobj="CC_LAB_TRIG")
 #     expect_equal(res.cc$validity.check, "<CC_LAB_TRIG> appears valid in all sources")
 #
@@ -58,18 +58,18 @@ test_that("continous, without NAs, all positive", {
 })
 
 # context("ds.ranksSecure::smk_expt::continous, with NAs, all positive")
-# test_that("continous, with NAs, all positive", {
+test_that("continous, with NAs, all positive", {
 #     res <- ds.ranksSecure("D$LAB_TSC")
 #
 #     expect_equal_to_reference(res, 'smk_expt-results/ds.ranksSecure-cont_nas.rds')
-# })
+})
 
 # context("ds.ranksSecure::smk_expt::continous, with NAs, with negative")
-# test_that("continous, with NAs, with negative", {
+test_that("continous, with NAs, with negative", {
 #    res <- ds.ranksSecure("D$LAB_TRIG")
 #
 #    expect_equal_to_reference(res, 'smk_expt-results/ds.ranksSecure-cont_nas_neg.rds')
-# })
+})
 
 #
 # Done
