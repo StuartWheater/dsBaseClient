@@ -29,9 +29,9 @@ test_that("setup", {
 test_that("NULL connections", {
     calltext <- call("fooBarDS")
     if (ds.test_env$driver == "ArmadilloDriver") {
-        expect_error(datashield.aggregate(conns=NULL, expr=calltext), "unable to find an inherited method for function 'dsIsAsync' for signature 'conn = \"NULL\"'", fixed=TRUE)
+        expect_error(datashield.aggregate(conns=NULL, expr=calltext), "unable to find an inherited method for function ‘dsIsAsync’ for signature ‘conn = \"NULL\"’", fixed=TRUE)
     } else if (ds.test_env$driver == "OpalDriver") {
-        expect_error(datashield.aggregate(conns=NULL, expr=calltext), "unable to find an inherited method for function 'dsIsAsync' for signature 'conn = \"NULL\"'", fixed=TRUE)
+        expect_error(datashield.aggregate(conns=NULL, expr=calltext), "unable to find an inherited method for function ‘dsIsAsync’ for signature ‘conn = \"NULL\"’", fixed=TRUE)
     } else {
         fail(message = "Unknown driver type", info = ds.test_env$driver)
     }
@@ -69,9 +69,9 @@ test_that("non existent aggregate foobarDS", {
 test_that("NULL connections", {
     calltext <- call("fooBarDS")
     if (ds.test_env$driver == "ArmadilloDriver") {
-        expect_error(datashield.assign(conns=NULL, symbol="new_obj", value=calltext), "unable to find an inherited method for function 'dsIsAsync' for signature 'conn = \"NULL\"'", fixed=TRUE)
+        expect_error(datashield.assign(conns=NULL, symbol="new_obj", value=calltext), "unable to find an inherited method for function ‘dsIsAsync’ for signature ‘conn = \"NULL\"'", fixed=TRUE)
     } else if (ds.test_env$driver == "OpalDriver") {
-        expect_error(datashield.assign(conns=NULL, symbol="new_obj", value=calltext), "unable to find an inherited method for function 'dsIsAsync' for signature 'conn = \"NULL\"'", fixed=TRUE)
+        expect_error(datashield.assign(conns=NULL, symbol="new_obj", value=calltext), "unable to find an inherited method for function ‘dsIsAsync’ for signature ‘conn = \"NULL\"’", fixed=TRUE)
     } else {
         fail(message = "Unknown driver type", info = ds.test_env$driver)
     }
