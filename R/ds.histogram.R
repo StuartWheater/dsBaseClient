@@ -167,6 +167,10 @@ ds.histogram <- function(x=NULL, type="split", num.breaks=10, method="smallCells
     stop("Please provide the name of the input vector!", call.=FALSE)
   }
 
+  # Save par and setup reseting of par values
+  old_par <- par(no.readonly = TRUE)
+  on.exit(par(old_par), add = TRUE)
+
   # check if the input object is defined in all the studies
   isDefined(datasources, x)
 

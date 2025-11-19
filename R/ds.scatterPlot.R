@@ -147,6 +147,10 @@ ds.scatterPlot <- function(x=NULL, y=NULL, method='deterministic', k=3, noise=0.
     stop("The 'datasources' were expected to be a list of DSConnection-class objects", call.=FALSE)
   }
 
+  # Save par and setup reseting of par values
+  old_par <- par(no.readonly = TRUE)
+  on.exit(par(old_par), add = TRUE)
+
   # check if the input objects are defined in all the studies
   isDefined(datasources, x)
   isDefined(datasources, y)
