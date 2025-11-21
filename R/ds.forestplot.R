@@ -10,6 +10,7 @@
 #' See details from \code{?meta::metagen} for the different options.
 #' @param layout \code{character} (default \code{"JAMA"}) Layout of the plot. 
 #' See details from \code{?meta::metagen} for the different options.
+#' @return Results a foresplot object created with `meta::forest`.
 #'
 #' @export
 #'
