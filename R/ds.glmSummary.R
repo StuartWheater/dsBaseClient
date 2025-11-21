@@ -172,17 +172,17 @@ if(obj.name.exists.in.all.sources && obj.non.null.in.all.sources){										 	#
 																											#
 																											#
 #	if(no.errors){																							#
-#	cat("\n\nCREATE ASSIGN OBJECT\n")																		#
+#	message("\n\nCREATE ASSIGN OBJECT\n")																		#
 #																											#
 #	validity.check<-paste0("<",test.obj.name, "> appears valid in all sources")							    #
 #	print(list(is.object.created=return.message,validity.check=validity.check))						    	#
 #	}																										#
 																											#
   if(!no.errors){																								#
- 	validity.check<-paste0("<",test.obj.name,"> invalid in at least one source. See studyside.messages:")   #
- 	print(list(is.object.created=return.message,validity.check=validity.check,					    		#
- 	            studyside.messages=studyside.message))			                                            #
- 	}																										#
+	validity.check<-paste0("<",test.obj.name,"> invalid in at least one source. See studyside.messages:")   #
+	message(list(is.object.created=return.message,validity.check=validity.check,						#
+	            studyside.messages=studyside.message))			                                            #
+	}																										#
 																											#
 #END OF CHECK OBJECT CREATED CORECTLY MODULE															 	#
 #############################################################################################################
