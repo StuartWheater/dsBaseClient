@@ -170,8 +170,8 @@ ds.heatmapPlot <- function(x=NULL, y=NULL, type="combine", show="all", numints=2
   }
 
   # Save par and setup reseting of par values
-  old_par <- par(no.readonly = TRUE)
-  on.exit(par(old_par), add = TRUE)
+  old_par <- graphics::par(no.readonly = TRUE)
+  on.exit(graphics::par(old_par), add = TRUE)
 
   # check if the input objects are defined in all the studies
   isDefined(datasources, x)
