@@ -231,13 +231,13 @@ if(!is.null(rm.cols)){
         if (notify.of.progress)
 	{
             if(num.messages==1){
-	        cat("\nSource",s,"\n",return.warning.message[[s]][[1]],"\n")
+	        message("\nSource",s,"\n",return.warning.message[[s]][[1]],"\n")
 	    }else{
-	        cat("\nSource",s,"\n")
+	        message("\nSource",s,"\n")
 		for(m in 1:(num.messages-1)){
-		    cat(return.warning.message[[s]][[m]],"\n")
+		    message(return.warning.message[[s]][[m]],"\n")
                 }
-                cat(return.warning.message[[s]][[num.messages]],"\n")
+                message(return.warning.message[[s]][[num.messages]],"\n")
 	    }
         }
     }

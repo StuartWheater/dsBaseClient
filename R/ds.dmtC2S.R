@@ -93,7 +93,7 @@ if(dplyr::is.tbl(dfdata))
 		
   if(!is.matrix(dfdata) && !is.data.frame(dfdata) && !dplyr::is.tbl(dfdata))
 	{
-	   cat("\n            FAILED: <dfdata> must either be a data.frame, matrix or tibble")	
+	   message("\n            FAILED: <dfdata> must either be a data.frame, matrix or tibble")	
        return('Please respecify')
 	}
 
