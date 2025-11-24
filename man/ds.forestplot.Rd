@@ -19,6 +19,9 @@ See details from \code{?meta::metagen} for the different options.}
 \item{layout}{\code{character} (default \code{"JAMA"}) Layout of the plot. 
 See details from \code{?meta::metagen} for the different options.}
 }
+\value{
+Results a foresplot object created with `meta::forest`.
+}
 \description{
 Draws a forestplot of the coefficients for Study-Level Meta-Analysis performed with
 DataSHIELD
