@@ -14,7 +14,6 @@
 #
 
 # context("isDefined::smk::setup")
-
 connect.discordant.dataset.simple(list("A", "B", "C"))
 
 test_that("setup", {
@@ -30,7 +29,7 @@ test_that("setup", {
 # context("isDefined::smk::default")
 test_that("default test, dataframe D", {
     res <- isDefined(ds.test_env$connections, "D")
-    
+
     expect_length(class(res), 1)
     expect_true(all("list" %in% class(res)))
     expect_length(res, 3)
@@ -45,7 +44,7 @@ test_that("default test, dataframe E", {
 
 test_that("default test, dataframe column E$A", {
 #    expect_error(isDefined(ds.test_env$connections, "E$A"), "The input object E$A is not defined in discordant1, discordant2, discordant3!", fixed=TRUE)
-    expect_error(isDefined(ds.test_env$connections, "E$A"), "There are some DataSHIELD errors, list them with datashield.errors()", fixed=TRUE)
+    expect_error(isDefined(ds.test_env$connections, "E$A"), "There are some DataSHIELD errors", fixed=TRUE)
 
     err <- DSI::datashield.errors();
 
@@ -94,7 +93,7 @@ test_that("default test, dataframe columns D$A,D$B", {
 # context("isDefined::smk::error.message=FALSE")
 test_that("error.message=FALSE test, dataframe D", {
     res <- isDefined(ds.test_env$connections, "D", error.message = FALSE)
-    
+
     expect_length(class(res), 1)
     expect_true(all("list" %in% class(res)))
     expect_length(res, 3)
@@ -116,7 +115,7 @@ test_that("error.message=FALSE test, dataframe E", {
 
 test_that("error.message=FALSE test, dataframe column E$A", {
 #    expect_error(isDefined(ds.test_env$connections, "E$A", error.message = FALSE), "The input object E$A is not defined in discordant1, discordant2, discordant3!", fixed=TRUE)
-    expect_error(isDefined(ds.test_env$connections, "E$A", error.message = FALSE), "There are some DataSHIELD errors, list them with datashield.errors()", fixed=TRUE)
+    expect_error(isDefined(ds.test_env$connections, "E$A", error.message = FALSE), "There are some DataSHIELD errors", fixed=TRUE)
 
     err <- DSI::datashield.errors();
 
@@ -200,7 +199,7 @@ test_that("error.message=FALSE test, dataframe columns D$A,D$B", {
 # context("isDefined::smk::error.message=TRUE")
 test_that("error.message=TRUE test, dataframe D", {
     res <- isDefined(ds.test_env$connections, "D", error.message = TRUE)
-    
+
     expect_length(class(res), 1)
     expect_true(all("list" %in% class(res)))
     expect_length(res, 3)
@@ -215,7 +214,7 @@ test_that("error.message=TRUE test, dataframe E", {
 
 test_that("error.message=TRUE test, dataframe column E$A", {
 #    expect_error(isDefined(ds.test_env$connections, "E$A", error.message = TRUE), "The input object E$A is not defined in discordant1, discordant2, discordant3!", fixed=TRUE)
-    expect_error(isDefined(ds.test_env$connections, "E$A", error.message = TRUE), "There are some DataSHIELD errors, list them with datashield.errors()", fixed=TRUE)
+    expect_error(isDefined(ds.test_env$connections, "E$A", error.message = TRUE), "There are some DataSHIELD errors", fixed=TRUE)
 
     err <- DSI::datashield.errors();
 
