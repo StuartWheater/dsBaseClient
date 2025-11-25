@@ -106,7 +106,6 @@ test_that("check results", {
         "ds.numNA",
         "ds.qlspline",
         "ds.quantileMean",
-        "ds.ranksSecure",
         "ds.rbind",
         "ds.rBinom",
         "ds.recodeLevels",
