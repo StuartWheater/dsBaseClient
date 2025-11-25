@@ -140,7 +140,7 @@ test_that("check results", {
         "ds.vectorCalc"
     )
 
-    expect_output(res <- ds.listClientsideFunctions(), "*")
+    res <- ds.listClientsideFunctions()
 
     for (func.name in output) {
         expect_true(func.name %in% res, info = func.name)

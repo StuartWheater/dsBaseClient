@@ -171,7 +171,7 @@ ds.matrix <- function(mdata = NA, from="clientside.scalar", nrows.scalar=NULL, n
   #Check that valid from has been specified
   if(from!="serverside.vector"&&from!="serverside.scalar"&&from!="clientside.scalar")
   {
-  cat("            FAILED: <from> must be specified as one of the following - 'serverside.vector',
+  message("            FAILED: <from> must be specified as one of the following - 'serverside.vector',
         'serverside.scalar', 'clientside.scalar'\n\n")
   return('Please respecify')
   }
