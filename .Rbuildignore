@@ -17,8 +17,8 @@
 ^R/secure.global.ranking.md$
 ^_pkgdown\.yml$
 ^docs$
-^dsBase_7.0-dev-feat_performance\.tar\.gz$
-^dsBase_7.0-dev-feat_performance-permissive\.tar\.gz$
+^dsBase_7.0.0\.tar\.gz$
+^dsBase_7.0.0-permissive\.tar\.gz$
 ^dsDanger_6.3.4.tar.gz$
 ^\.circleci$
 ^\.circleci/config\.yml$
