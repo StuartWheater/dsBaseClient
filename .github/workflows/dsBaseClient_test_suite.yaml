@@ -14,7 +14,7 @@ name: dsBaseClient tests' suite
 on:
   push:
   schedule:
-    - cron: '0 0 * * 6'   # Weekly
+    - cron: '0 0 * * 6'   # Weekly (on Saturdays @ 0.00)
 
 jobs:
   dsBaseClient_test_suite:
@@ -188,6 +188,7 @@ jobs:
           echo "branch:${{ env.BRANCH_NAME }}" > ${{ env.WORKFLOW_ID }}.txt
           echo "os:$(lsb_release -ds)" >> ${{ env.WORKFLOW_ID }}.txt
           echo "R:$(R --version | head -n1)" >> ${{ env.WORKFLOW_ID }}.txt
+          Rscript --vanilla -e 'sessionInfo()' >> session_info_${{ env.WORKFLOW_ID }}.txt
         working-directory: dsBaseClient/logs
         
       - name: Parse results from testthat and covr
