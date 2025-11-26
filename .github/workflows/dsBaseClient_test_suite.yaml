@@ -14,8 +14,7 @@ name: dsBaseClient tests' suite
 on:
   push:
   schedule:
-    - cron: '0 0 * * 0'   # Weekly
-    - cron: '0 1 * * *'   # Nightly
+    - cron: '0 0 * * 6'   # Weekly
 
 jobs:
   dsBaseClient_test_suite:
