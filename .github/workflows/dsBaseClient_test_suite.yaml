@@ -14,8 +14,7 @@ name: dsBaseClient tests' suite
 on:
   push:
   schedule:
-    - cron: '0 0 * * 0'   # Weekly
-    - cron: '0 1 * * *'   # Nightly
+    - cron: '0 0 * * 6'   # Weekly (on Saturdays @ 0.00)
 
 jobs:
   dsBaseClient_test_suite:
@@ -189,13 +188,17 @@ jobs:
           echo "branch:${{ env.BRANCH_NAME }}" > ${{ env.WORKFLOW_ID }}.txt
           echo "os:$(lsb_release -ds)" >> ${{ env.WORKFLOW_ID }}.txt
           echo "R:$(R --version | head -n1)" >> ${{ env.WORKFLOW_ID }}.txt
+          Rscript --vanilla -e 'sessionInfo()' >> session_info_${{ env.WORKFLOW_ID }}.txt
         working-directory: dsBaseClient/logs
 
       - name: Parse results from testthat and covr
         run: |
-          Rscript --verbose --vanilla ../testStatus/source/parse_test_report.R logs/
-        working-directory: dsBaseClient
-
+          Rscript --verbose --vanilla ../testStatus/source/parse_test_report.R logs/ logs/ https://github.com/datashield/${{ env.PROJECT_NAME }}/blob/${{ env.BRANCH_NAME }} '([^:]+)' '(?<=::)[^:]+(?=::)'
+        working-directory: dsBaseClient  
+        env:
+          PROJECT_NAME: ${{ env.PROJECT_NAME }}
+          BRANCH_NAME: ${{ env.BRANCH_NAME }}
+        
       - name: Render report
         run: |
           cd testStatus
