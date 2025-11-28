@@ -1,12 +1,8 @@
 services:
     opal:
-<<<<<<< HEAD
-        image: datashield/opal_citest:5.1.2
-=======
-        image: obiba/opal:5.1.4
->>>>>>> origin/v6.3.3-dev
+        image: datashield/opal_citest:latest
         ports:
-            - "8443:8443"
+            - 8443:8443
         links:
             - mongo
             - rock
@@ -24,8 +20,6 @@ services:
             - MONGO_INITDB_ROOT_USERNAME=root
             - MONGO_INITDB_ROOT_PASSWORD=foobar
     rock:
-<<<<<<< HEAD
         image: datashield/rock-margin-devel-permissive:latest
-=======
-        image: datashield/rock-margin-joule-permissive:latest
->>>>>>> origin/v6.3.3-dev
+        environment:
+            DEBUG: "FALSE"
