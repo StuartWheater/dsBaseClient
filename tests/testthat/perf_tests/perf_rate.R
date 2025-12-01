@@ -8,7 +8,8 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #-------------------------------------------------------------------------------
 
-.perf.reference.filename <- 'perf_files/default_perf_profile.csv'
+.perf.reference.filename      <- 'perf_files/default_perf_profile.csv'
+.perf.reference.save.filename <- NULL
 
 .perf.reference <- NULL
 
@@ -22,7 +23,13 @@ perf.reference.save <- function(perf.ref.name, rate, tolerance.lower, tolerance.
 
     .perf.reference[nrow(.perf.reference)+1,] <- c(perf.ref.name, rate, tolerance.lower, tolerance.upper)
 
-    write.csv(.perf.reference, .perf.reference.filename, row.names = FALSE)
+    if (is.null(.perf.reference.save.filename))
+    {
+        .perf.reference.save.filename <<- base::tempfile(pattern = "perf_file_", fileext = ".csv")
+        message(paste0("Additional perf record added to '", .perf.reference.save.filename, "'"))
+    }
+
+    write.csv(.perf.reference, .perf.reference.save.filename, row.names = FALSE)
 
     .perf.reference <<- .perf.reference
 }
