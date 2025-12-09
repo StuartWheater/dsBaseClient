@@ -52,14 +52,10 @@
 ds.colnames <- function(x=NULL, datasources=NULL) {
 
   .set_datasources(datasources)
-
-  if(is.null(x)){
-    stop("Please provide the name of a data.frame or matrix!", call.=FALSE)
-  }
+  .check_df_name_provided(x)
 
   cally <- call("colnamesDS", x)
   column_names <- DSI::datashield.aggregate(datasources, cally)
-
   return(column_names)
 
 }
