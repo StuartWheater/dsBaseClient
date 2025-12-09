@@ -55,7 +55,7 @@ ds.colnames <- function(x=NULL, datasources=NULL) {
   .check_df_name_provided(x)
 
   cally <- call("colnamesDS", x)
-  column_names <- DSI::datashield.aggregate(datasources, cally)§
+  column_names <- DSI::datashield.aggregate(datasources, cally)
   return(column_names)
 
 }
