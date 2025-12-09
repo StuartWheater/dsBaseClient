@@ -47,7 +47,7 @@ test_that("simple colnames", {
 test_that("fails if the object does not exist", {
   expect_error(
     ds.colnames("non_existing_df"),
-    regexp = "The input object non_existing_df is not defined in sim1, sim2, sim3!",
+    regexp = "object 'non_existing_df' not found",
     ignore.case = TRUE
   )
 })
