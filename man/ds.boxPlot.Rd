@@ -46,7 +46,7 @@ of grouping using categorical variables on the dataset (only for data frames)
   ## Version 6, for version 5 see the Wiki
   
   ### Please ensure you have a training Virtual Machine running,
-   or that you have a live connection to a server.
+  # or that you have a live connection to a server.
      
   # Connecting to the Opal servers
 
