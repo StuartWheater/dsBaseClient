@@ -51,7 +51,7 @@
 #'
 ds.colnames <- function(x=NULL, datasources=NULL) {
 
-  .set_datasources(datasources)
+  datasources <- .set_datasources(datasources)
   .check_df_name_provided(x)
 
   cally <- call("colnamesDS", x)

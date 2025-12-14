@@ -47,7 +47,8 @@ test_that("simple colnames", {
 test_that("fails if the object does not exist", {
   expect_error(
     ds.colnames("non_existing_df"),
-    regexp = "object 'non_existing_df' not found",
+#    regexp = "object 'non_existing_df' not found",
+    regexp = "There are some DataSHIELD errors, list them with datashield.errors()",
     ignore.case = TRUE
   )
 })
