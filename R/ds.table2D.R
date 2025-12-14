@@ -112,6 +112,13 @@ ds.table2D <- function(x=NULL, y=NULL, type='both', warningMessage=TRUE, datasou
     stop("Function argument 'type' has to be either 'combine', 'split' or 'both'")
   }
 
+  #################################################
+  # Setup on.exit() to restore options 'warn' value
+  #################################################
+
+  old_warn_option <- base::getOption("warn")
+  on.exit(base::options(warn = old_warn_option), add = TRUE)
+
   # the input variable might be given as column table (i.e. D$x)
   # or just as a vector not attached to a table (i.e. x)
   # we have to make sure the function deals with each case
