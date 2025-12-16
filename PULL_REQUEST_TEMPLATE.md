@@ -13,8 +13,9 @@
 ### Testing instructions
 - [ ] Writen client-side unit tests for unhappy flow
 - [ ] Run `devtools::test(filter = "smk-|disc|arg")` and check it passes
-- [ ] Run `devtools::check(args = '--no-tests')` and check it passes (we run tests separately to skip performance checks)
+- [ ] Run `devtools::check(args = '--no-tests')` and check it passes
 - [ ] Run `devtools::build()` and check it builds without errors
+- [ ] Check that the continuous integration checks pass on the pull request branch. Note that the performance test relating to your function may fail, as failure is also triggered by a dramatic improval in performance! 
 
 ## Instructions & checklist for PR reviewers
 - [ ] Checkout this branch as well as the corresponding branch of dsBase
@@ -23,3 +24,4 @@
 - [ ] Run `devtools::test(filter = "smk-|disc|arg")` and check it passes
 - [ ] Run `devtools::check(args = '--no-tests')` and check it passes (we run tests separately to skip performance checks)
 - [ ] Run `devtools::build()` and check it builds without errors
+- [ ] Check that the continuous integration checks pass on the pull request branch (see above note on performance checks)
