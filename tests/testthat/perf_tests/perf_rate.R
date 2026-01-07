@@ -27,7 +27,7 @@
         warning("Unknown performance profile driver, using 'unknown'")
     }
 
-    perf.profile = base::Sys.getenv("PERF_PROFILE")
+    perf.profile <- base::Sys.getenv("PERF_PROFILE")
     if (nchar(perf.profile) > 0)
         perf.reference.filename.platform.infix <- base::tolower(perf.profile)
     else
