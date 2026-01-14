@@ -17,6 +17,6 @@ services:
     default:
         hostname: default
 #        image: datashield/rock-quebrada-lamda-permissive:latest
-        image: datashield/datashield/molgenis-rock-base-permissive:1.0.0
+        image: datashield/molgenis-rock-base-permissive:1.0.0
         environment:
             DEBUG: "FALSE"
