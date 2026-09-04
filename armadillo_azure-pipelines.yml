@@ -277,26 +277,18 @@ jobs:
       # "_-|arg-|smk-|datachk-|disc-|math-|expt-|expt_smk-"
       # testthat::test_package("$(projectName)", filter = "_-|datachk-|smk-|arg-|disc-|perf-|smk_expt-|expt-|math-", reporter = multi_rep, stop_on_failure = FALSE)
       sudo env PERF_PROFILE=$PERF_PROFILE R -q -e '
-        library(covr);
-        dsbase.res <- covr::package_coverage(
-            type = c("none"),
-            code = c(
-                '"'"'
-                library(testthat);
-                output_file <- file("test_console_output_dsbase.txt");
-                sink(output_file);
-                sink(output_file, type = "message");
-                library(testthat);
-                junit_rep <- JunitReporter$new(file = "test_results_dsbase.xml");
-                progress_rep <- ProgressReporter$new(max_failures = 999999);
-                multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
-                options("datashield.return_errors" = FALSE);
-                options("default_driver" = "ArmadilloDriver");
-                testthat::test_package("$(projectName)", filter = "_-|datachk-|smk-|arg-|disc-|perf-|smk_expt-|expt-|math-", reporter = multi_rep, stop_on_failure = FALSE)
-                '"'"'
-            )
-        );
-        base::saveRDS(dsbase.res, "test_results_dsbase.rds")'
+          library(testthat);
+          output_file <- file("test_console_output_dsbase.txt");
+          sink(output_file);
+          sink(output_file, type = "message");
+          junit_rep <- JunitReporter$new(file = "test_results_dsbase.xml");
+          progress_rep <- ProgressReporter$new(max_failures = 999999);
+          multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
+              options("datashield.return_errors" = FALSE);
+              options("default_driver" = "ArmadilloDriver");
+              testthat::test_package("$(projectName)", filter = "_-|datachk-|smk-|arg-|disc-|perf-|smk_expt-|expt-|math-", reporter = multi_rep, stop_on_failure = FALSE)
+          )
+      );
 
       # display the test console output
       cat test_console_output_dsbase.txt
