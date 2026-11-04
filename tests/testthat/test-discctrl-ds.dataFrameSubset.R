@@ -32,11 +32,11 @@ test_that("simple c", {
 
     expect_length(res_errors, 3)
     expect_length(res_errors$sim1, 1)
-    expect_equal(res_errors$sim1, "Command 'dataFrameSubsetDS1(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, \n    FALSE)' failed on 'sim1': Error while evaluating 'dsBase::dataFrameSubsetDS1(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, FALSE)' -> Error in checkPermissivePrivacyControlLevel() : \n  BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked\n", fixed = TRUE)
+    expect_equal(res_errors$sim1, "Command 'dataFrameSubset1DS(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, \n    FALSE)' failed on 'sim1': Error while evaluating 'dsBase::dataFrameSubset1DS(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, FALSE)' -> Error in checkPermissivePrivacyControlLevel() : \n  BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked\n", fixed = TRUE)
     expect_length(res_errors$sim2, 1)
-    expect_equal(res_errors$sim2, "Command 'dataFrameSubsetDS1(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, \n    FALSE)' failed on 'sim2': Error while evaluating 'dsBase::dataFrameSubsetDS1(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, FALSE)' -> Error in checkPermissivePrivacyControlLevel() : \n  BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked\n", fixed = TRUE)
+    expect_equal(res_errors$sim2, "Command 'dataFrameSubset1DS(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, \n    FALSE)' failed on 'sim2': Error while evaluating 'dsBase::dataFrameSubset1DS(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, FALSE)' -> Error in checkPermissivePrivacyControlLevel() : \n  BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked\n", fixed = TRUE)
     expect_length(res_errors$sim3, 1)
-    expect_equal(res_errors$sim3, "Command 'dataFrameSubsetDS1(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, \n    FALSE)' failed on 'sim3': Error while evaluating 'dsBase::dataFrameSubsetDS1(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, FALSE)' -> Error in checkPermissivePrivacyControlLevel() : \n  BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked\n", fixed = TRUE)
+    expect_equal(res_errors$sim3, "Command 'dataFrameSubset1DS(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, \n    FALSE)' failed on 'sim3': Error while evaluating 'dsBase::dataFrameSubset1DS(\"D\", \"D$LAB_TSC\", \"D$LAB_HDL\", 2, NULL, NULL, FALSE)' -> Error in checkPermissivePrivacyControlLevel() : \n  BLOCKED: The server is running in 'non-permissive' mode which has caused this method to be blocked\n", fixed = TRUE)
 })
 
 #

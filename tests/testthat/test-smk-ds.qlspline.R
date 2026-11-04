@@ -1,4 +1,4 @@
-#-------------------------------------------------------------------------------
+y#-------------------------------------------------------------------------------
 # Copyright (c) 2019-2022 University of Newcastle upon Tyne. All rights reserved.
 # Copyright (c) 2022-2025 Arjuna Technologies, Newcastle upon Tyne. All rights reserved.
 #
@@ -61,15 +61,15 @@ test_that("qlspline", {
     expect_true("matrix" %in% class(res.mod$coefficients))
     expect_true("array" %in% class(res.mod$coefficients))
     expect_equal(res.mod$coefficients['(Intercept)','Estimate'], -1.019282794, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS1','Estimate'], 0.120196255, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS2','Estimate'], 0.067803329, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS3','Estimate'], 0.006651009, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS4','Estimate'], 0.133116769, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline1DS','Estimate'], 0.120196255, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline2DS','Estimate'], 0.067803329, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline3DS','Estimate'], 0.006651009, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline4DS','Estimate'], 0.133116769, tolerance = ds.test_env$tolerance)
     expect_equal(res.mod$coefficients['(Intercept)','Std. Error'], 0.27768921, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS1','Std. Error'], 0.01259812, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS2','Std. Error'], 0.02097099, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS3','Std. Error'], 0.02072403, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS4','Std. Error'], 0.01201930, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline1DS','Std. Error'], 0.01259812, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline2DS','Std. Error'], 0.02097099, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline3DS','Std. Error'], 0.02072403, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline4DS','Std. Error'], 0.01201930, tolerance = ds.test_env$tolerance)
     expect_equal(res.mod$dev, 17000.26, tolerance = ds.test_env$tolerance)
     expect_equal(res.mod$df, 7472)
     expect_equal(res.mod$output.information, "SEE TOP OF OUTPUT FOR INFORMATION ON MISSING DATA AND ERROR MESSAGES")
@@ -80,9 +80,9 @@ test_that("qlspline", {
 # context("ds.qlspline::smk::test2")
 test_that("qlspline", {
     
-    ds.qlspline(x="D$PM_BMI_CONTINUOUS", q=c(0.3,0.6), na.rm=TRUE, newobj="qlsplineDS2", datasources=ds.test_env$connections)
+    ds.qlspline(x="D$PM_BMI_CONTINUOUS", q=c(0.3,0.6), na.rm=TRUE, newobj="qlspline2DS", datasources=ds.test_env$connections)
 
-    res.class <- ds.class("qlsplineDS2", datasources=ds.test_env$connections)
+    res.class <- ds.class("qlspline2DS", datasources=ds.test_env$connections)
     
     expect_length(res.class, 3)
     expect_equal(res.class$sim1[1], "lspline")
@@ -92,7 +92,7 @@ test_that("qlspline", {
     expect_equal(res.class$sim3[1], "lspline")
     expect_equal(res.class$sim3[2], "matrix")
     
-    res.mod <- ds.glm(formula = "D$LAB_TRIG~qlsplineDS2", family='gaussian', datasources=ds.test_env$connections)
+    res.mod <- ds.glm(formula = "D$LAB_TRIG~qlspline2DS", family='gaussian', datasources=ds.test_env$connections)
     
     expect_length(res.mod, 13)
     expect_equal(res.mod$Nvalid, 7477)
@@ -109,17 +109,17 @@ test_that("qlspline", {
     expect_equal(res.mod$nsubs, 7477)
     expect_equal(res.mod$iter, 3)
     expect_true("family" %in% class(res.mod$family))
-    expect_equal(res.mod$formula, "D$LAB_TRIG ~ qlsplineDS2")
+    expect_equal(res.mod$formula, "D$LAB_TRIG ~ qlspline2DS")
     expect_true("matrix" %in% class(res.mod$coefficients))
     expect_true("array" %in% class(res.mod$coefficients))
     expect_equal(res.mod$coefficients['(Intercept)','Estimate'], -1.04058508, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS21','Estimate'], 0.12128692, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS22','Estimate'], 0.01708104, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS23','Estimate'], 0.10189071, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline21DS','Estimate'], 0.12128692, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline22DS','Estimate'], 0.01708104, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline23DS','Estimate'], 0.10189071, tolerance = ds.test_env$tolerance)
     expect_equal(res.mod$coefficients['(Intercept)','Std. Error'], 0.248311459, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS21','Std. Error'], 0.010959394, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS22','Std. Error'], 0.015233708, tolerance = ds.test_env$tolerance)
-    expect_equal(res.mod$coefficients['qlsplineDS23','Std. Error'], 0.008551969, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline21DS','Std. Error'], 0.010959394, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline22DS','Std. Error'], 0.015233708, tolerance = ds.test_env$tolerance)
+    expect_equal(res.mod$coefficients['qlspline23DS','Std. Error'], 0.008551969, tolerance = ds.test_env$tolerance)
     expect_equal(res.mod$dev, 17031.72, tolerance = ds.test_env$tolerance)
     expect_equal(res.mod$df, 7473)
     expect_equal(res.mod$output.information, "SEE TOP OF OUTPUT FOR INFORMATION ON MISSING DATA AND ERROR MESSAGES")
@@ -147,7 +147,7 @@ test_that("fails if the object does not exist", {
 # context("ds.qlspline::smk::shutdown")
 
 test_that("shutdown", {
-    ds_expect_variables(c("D", "LAB_TRIG", "qlsplineDS", "qlsplineDS2"))
+    ds_expect_variables(c("D", "LAB_TRIG", "qlsplineDS", "qlspline2DS"))
 })
 
 disconnect.studies.dataset.cnsim()
