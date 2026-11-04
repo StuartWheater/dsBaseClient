@@ -67,7 +67,7 @@
 #' wish to apply a different optimizer - potentially one they have developed themselves -
 #' the development team can activate this argument so alternatives can be specified.
 #' 
-#' Server function called: \code{lmerSLMADS2} 
+#' Server function called: \code{lmerSLMA2DS} 
 #' 
 #' @param formula an object of class formula describing the model to be fitted. 
 #' For more information see \strong{Details}.
@@ -281,7 +281,7 @@ ds.lmerSLMA <- function(formula=NULL, offset=NULL, weights=NULL, combine.with.me
  
   #NOW CALL SECOND COMPONENT OF glmDS TO GENERATE SCORE VECTORS AND INFORMATION MATRICES
 
-  calltext <- call('lmerSLMADS2', formula, offset, weights, dataName, REML,
+  calltext <- call('lmerSLMA2DS', formula, offset, weights, dataName, REML,
                     control_type, control_value.transmit, optimizer, verbose)
   
   if(assign==TRUE){

@@ -67,7 +67,7 @@ ds.sample(
   to be 0, you can specify a non-zero scalar value for
   \<seed.as.integer\> and then use the \<datasources\> argument to
   generate the random number vectors one source at a time (e.g.
-  ,datasources=default.opals\[2\] to generate the random vector in
+  ,datasources=default.connections\[2\] to generate the random vector in
   source 2). As an example, if the \<seed.as.integer\> value is 78326
   then the seed in each source will be set at 78326\*1 = 78326 because
   the vector of datasources being used in each call to the function will
@@ -97,16 +97,18 @@ ds.sample(
 
 - datasources:
 
-  specifies the particular opal object(s) to use. If the \<datasources\>
-  argument is not specified the default set of opals will be used. The
-  default opals are called default.opals and the default can be set
-  using the function `ds.setDefaultOpals`. If the \<datasources\> is to
-  be specified, it should be set without inverted commas: e.g.
-  datasources=opals.em or datasources=default.opals. If you wish to
-  apply the function solely to e.g. the second opal server in a set of
-  three, the argument can be specified as: e.g.
-  datasources=opals.em\[2\]. If you wish to specify the first and third
-  opal servers in a set you specify: e.g. datasources=opals.em\[c(1,3)\]
+  specifies the particular connection object(s) to use. If the
+  \<datasources\> argument is not specified the default set of servers
+  will be used. The default servers are called default.connections and
+  the default can be set using the function
+  [`DSI::datashield.connections_default`](https://datashield.github.io/DSI/reference/datashield.connections_default.html).
+  If the \<datasources\> is to be specified, it should be set without
+  inverted commas: e.g. datasources=connections.em or
+  datasources=default.connections. If you wish to apply the function
+  solely to e.g. the second server in a set of three, the argument can
+  be specified as: e.g. datasources=connections.em\[2\]. If you wish to
+  specify the first and third servers in a set you specify: e.g.
+  datasources=connections.em\[c(1,3)\]
 
 - notify.of.progress:
 
@@ -116,15 +118,7 @@ ds.sample(
 ## Value
 
 the object specified by the \<newobj\> argument (or default name
-'newobj.sample') which is written to the serverside. In addition, two
-validity messages are returned indicating whether \<newobj\> has been
-created in each data source and if so whether it is in a valid form. If
-its form is not valid in at least one study - e.g. because a disclosure
-trap was tripped and creation of the full output object was blocked -
-ds.dataFrameSort() also returns any studysideMessages that may explain
-the error in creating the full output object. We are currently working
-to extend the information that can be returned to the clientside when an
-error occurs.
+'newobj.sample') which is written to the serverside.
 
 ## Details
 
@@ -192,3 +186,5 @@ why line 2 is inserted to create a copy with a shorter name.
 ## Author
 
 Paul Burton, for DataSHIELD Development Team, 15/4/2020
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

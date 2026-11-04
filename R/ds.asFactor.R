@@ -5,7 +5,7 @@
 #' The matrix of dummy variables also depends on the argument
 #' \code{baseline.level}.
 #'
-#' ds.asFactor.R and its associated serverside functions asFactorDS1 and asFactorDS2
+#' ds.asFactor.R and its associated serverside functions asFactor1DS and asFactor2DS
 #' are to be used when you have variable that has up to 40 unique levels across
 #' all sources combined. If one of the sources does not contain any subjects at a
 #' particular level, that level will still be created as an empty category. In the
@@ -115,7 +115,7 @@
 #' }
 #'
 #'
-#' Server functions called: \code{asFactorDS1} and \code{asFactorDS2}
+#' Server functions called: \code{asFactor1DS} and \code{asFactor2DS}
 #' @param input.var.name a character string which provides 
 #' the name of the variable to be converted to a factor. 
 #' @param newobj.name a character string that provides the name for the output variable 
@@ -207,7 +207,7 @@ ds.asFactor <- function(input.var.name=NULL, newobj.name=NULL, forced.factor.lev
 
   #CALL THE FIRST SERVER SIDE FUNCTION (AN AGGREGATE FUNCTION)
   #TO DETERMINE ALL OF THE LEVELS REQUIRED
-  calltext1 <- call("asFactorDS1", input.var.name)
+  calltext1 <- call("asFactor1DS", input.var.name)
   all.levels <- DSI::datashield.aggregate(datasources, calltext1)
 
   failed.levels <- FALSE
@@ -236,7 +236,7 @@ ds.asFactor <- function(input.var.name=NULL, newobj.name=NULL, forced.factor.lev
 
   all.unique.levels.transmit <- paste0(all.unique.levels, collapse=",")
 
-  calltext2 <- call("asFactorDS2", input.var.name, all.unique.levels.transmit, fixed.dummy.vars, baseline.level)
+  calltext2 <- call("asFactor2DS", input.var.name, all.unique.levels.transmit, fixed.dummy.vars, baseline.level)
   DSI::datashield.assign(datasources, newobj.name, calltext2)
 
   return(list(all.unique.levels=all.unique.levels))

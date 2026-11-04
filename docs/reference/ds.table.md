@@ -246,3 +246,5 @@ warnings. However, it is defaulted to FALSE.
 
 Paul Burton and Alex Westerberg for DataSHIELD Development Team,
 01/05/2020
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

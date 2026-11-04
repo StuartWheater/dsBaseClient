@@ -74,3 +74,5 @@ https://www.nhlbi.nih.gov/sites/default/files/media/docs/hbp_ped.pdf
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

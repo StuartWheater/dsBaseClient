@@ -74,7 +74,7 @@
 #' that has not formally converged with those obtained after convergence using the higher
 #' tolerance. 
 #' 
-#' Server function called: \code{glmerSLMADS2} 
+#' Server function called: \code{glmerSLMA2DS} 
 #' 
 #' @param formula an object of class formula describing the model to be fitted. 
 #' For more information see \strong{Details}. 
@@ -337,7 +337,7 @@ ds.glmerSLMA <- function(formula=NULL, offset=NULL, weights=NULL, combine.with.m
   #NOW CALL SECOND COMPONENT OF glmDS TO GENERATE SCORE VECTORS AND INFORMATION MATRICES
   
   
-  calltext <- call('glmerSLMADS2', formula, offset, weights, dataName, family, 
+  calltext <- call('glmerSLMA2DS', formula, offset, weights, dataName, family, 
                    control_type, control_value.transmit, nAGQ, verbose, theta, fixef)
   
   if(assign==TRUE){

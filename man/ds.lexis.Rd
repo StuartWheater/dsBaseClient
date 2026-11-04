@@ -160,7 +160,7 @@ then the expanded data frame is not created in that study, and the function fail
 study with an error that can be viewed with \code{DSI::datashield.errors()}.
 
 
-Server functions called: \code{lexisDS1}, \code{lexisDS2} and \code{lexisDS3}
+Server functions called: \code{lexis1DS}, \code{lexis2DS} and \code{lexis3DS}
 }
 \examples{
 \dontrun{

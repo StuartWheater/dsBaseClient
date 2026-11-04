@@ -48,7 +48,7 @@ ds.kurtosis <- function(x=NULL, method=1, type='both', datasources=NULL, classCo
   }
   
   if (type=='split' | type=='both'){
-    calltext.split <- call("kurtosisDS1", x, method)
+    calltext.split <- call("kurtosis1DS", x, method)
     output.split <- DSI::datashield.aggregate(datasources, calltext.split) 
     if(classConsistencyCheck){
       .checkClassConsistency(output.split)
@@ -67,7 +67,7 @@ ds.kurtosis <- function(x=NULL, method=1, type='both', datasources=NULL, classCo
     if (is.na(global.mean)){
       stop("FAILED: The number of valid observations in one or more studies is less than nfilter.tab. \n Check that by using the argument type=='split'", call.=FALSE)
     }else{
-      calltext.combined <- call("kurtosisDS2", x, global.mean)
+      calltext.combined <- call("kurtosis2DS", x, global.mean)
       output.combined <- DSI::datashield.aggregate(datasources, calltext.combined) 
       if(classConsistencyCheck){
         .checkClassConsistency(output.combined)

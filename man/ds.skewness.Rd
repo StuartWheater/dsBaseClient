@@ -59,7 +59,7 @@ the skewness is returned separately for each study.\cr
 If \code{x} contains any missing value, the function removes those before
 the calculation of the skewness. 
 
-Server functions called: \code{skewnessDS1} and \code{skewnessDS2}
+Server functions called: \code{skewness1DS} and \code{skewness2DS}
 }
 \examples{
 \dontrun{

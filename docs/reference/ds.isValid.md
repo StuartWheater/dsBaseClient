@@ -6,7 +6,7 @@ to or greater than the threshold set by DataSHIELD.
 ## Usage
 
 ``` r
-ds.isValid(x = NULL, datasources = NULL)
+ds.isValid(x = NULL, datasources = NULL, classConsistencyCheck = TRUE)
 ```
 
 ## Arguments
@@ -23,6 +23,11 @@ ds.isValid(x = NULL, datasources = NULL)
   objects obtained after login. If the `datasources` argument is not
   specified the default set of connections will be used: see
   [`datashield.connections_default`](https://datashield.github.io/DSI/reference/datashield.connections_default.html).
+
+- classConsistencyCheck:
+
+  logical. If TRUE, checks that the input object has the same class
+  across all studies. Default TRUE.
 
 ## Value
 
@@ -45,6 +50,8 @@ Server function called: `isValidDS`
 
 DataSHIELD Development Team
 
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+
 ## Examples
 
 ``` r
@@ -52,25 +59,25 @@ if (FALSE) { # \dontrun{
 
   ## Version 6, for version 5 see the Wiki
   
-  # connecting to the Opal servers
+  # connecting to the Armadillo/Opal servers
 
   require('DSI')
+  require('DSMolgenisArmadillo')
   require('DSOpal')
   require('dsBaseClient')
 
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/cnsim/CNSIM1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM3", driver = "OpalDriver")
+                 table = "CNSIM.CNSIM2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
   
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 

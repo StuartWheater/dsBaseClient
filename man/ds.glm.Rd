@@ -255,7 +255,7 @@ and information matrices). It will then rely on functions in the
 R package metafor to meta-analyse the key parameters.
 
 
-Server functions called: \code{glmDS1} and \code{glmDS2}
+Server functions called: \code{glm1DS} and \code{glm2DS}
 }
 \examples{
 \dontrun{

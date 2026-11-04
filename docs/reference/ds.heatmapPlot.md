@@ -15,7 +15,8 @@ ds.heatmapPlot(
   method = "smallCellsRule",
   k = 3,
   noise = 0.25,
-  datasources = NULL
+  datasources = NULL,
+  classConsistencyCheck = FALSE
 )
 ```
 
@@ -73,6 +74,11 @@ ds.heatmapPlot(
   objects obtained after login. If the `datasources` argument is not
   specified the default set of connections will be used: see
   [`datashield.connections_default`](https://datashield.github.io/DSI/reference/datashield.connections_default.html).
+
+- classConsistencyCheck:
+
+  logical. If TRUE, checks that the input object has the same class
+  across all studies. Default FALSE.
 
 ## Value
 
@@ -154,5 +160,7 @@ Server function called: `heatmapPlotDS`
 ## Author
 
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 
 ## Examples

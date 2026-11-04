@@ -33,7 +33,7 @@ possible if the number of columns and rows of the matrix are the same.
 Calculates the determinant of a square matrix on the server-side.
 This function is similar to the native R \code{determinant} function.
 
-Server function called: \code{matrixDetDS2}
+Server function called: \code{matrixDet2DS}
 }
 \examples{
 \dontrun{

@@ -31,7 +31,7 @@ This function is similar to the native R \code{determinant} function.
 This operation is only
 possible if the number of columns and rows of the matrix are the same.
 
-Server function called: \code{matrixDetDS1}
+Server function called: \code{matrixDet1DS}
 }
 \examples{
 \dontrun{

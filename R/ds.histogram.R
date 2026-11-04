@@ -55,7 +55,7 @@
 #'     is returned.}
 #'     }
 #' 
-#' Server function called: \code{histogramDS2}
+#' Server function called: \code{histogram2DS}
 #' @param x a character string specifying the name of a numerical vector.
 #' @param type a character string that represents the type of graph to display.
 #' The \code{type} argument can be set as \code{'combine'} or \code{'split'}. 
@@ -186,7 +186,7 @@ ds.histogram <- function(x=NULL, type="split", num.breaks=10, method="smallCells
   if(method=='probabilistic'){ method.indicator <- 3 }
 
   # call the server-side function that returns the range of the vector from each study
-  histogram.ranges <- datashield.aggregate(datasources, call("histogramDS1", x=x, method.indicator=method.indicator, k=k, noise=noise))
+  histogram.ranges <- datashield.aggregate(datasources, call("histogram1DS", x=x, method.indicator=method.indicator, k=k, noise=noise))
   if(classConsistencyCheck){
     .checkClassConsistency(histogram.ranges, object_name = x)
   }
@@ -202,7 +202,7 @@ ds.histogram <- function(x=NULL, type="split", num.breaks=10, method="smallCells
   varname <- xnames$elements
 
   # call the server-side function that generates the histogram object to plot
-  outputs <- datashield.aggregate(datasources, call("histogramDS2", x=x, num.breaks=num.breaks, min=min, max=max, method.indicator=method.indicator, k=k, noise=noise))
+  outputs <- datashield.aggregate(datasources, call("histogram2DS", x=x, num.breaks=num.breaks, min=min, max=max, method.indicator=method.indicator, k=k, noise=noise))
 
   hist.objs <- vector("list", length(datasources))
   invalidcells <- vector("list", length(datasources))

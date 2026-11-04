@@ -10,7 +10,7 @@
 #' as the data frame to be subsetted in each study in which every element is 1 and 
 #' there are no missing values. For more information see the example 2 below. 
 #' 
-#' Server functions called: \code{dataFrameSubsetDS1} and \code{dataFrameSubsetDS2}
+#' Server functions called: \code{dataFrameSubset1DS} and \code{dataFrameSubset2DS}
 #' 
 #' @param df.name a character string providing the name of the data frame to be subset. 
 #' @param V1.name  A character string specifying the name of the vector 
@@ -209,10 +209,10 @@ if(!is.null(rm.cols)){
   rm.cols<-paste0(as.character(rm.cols),collapse=",")
  }
 
-    calltext1 <- call("dataFrameSubsetDS1", df.name, V1.name, V2.name, BO.n, keep.cols, rm.cols, keep.NAs)
+    calltext1 <- call("dataFrameSubset1DS", df.name, V1.name, V2.name, BO.n, keep.cols, rm.cols, keep.NAs)
     return.warning.message<-DSI::datashield.aggregate(datasources, calltext1)
 
-    calltext2 <- call("dataFrameSubsetDS2", df.name, V1.name, V2.name, BO.n, keep.cols, rm.cols, keep.NAs)
+    calltext2 <- call("dataFrameSubset2DS", df.name, V1.name, V2.name, BO.n, keep.cols, rm.cols, keep.NAs)
     DSI::datashield.assign(datasources, newobj, calltext2)
 
     numsources<-length(datasources)

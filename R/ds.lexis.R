@@ -110,7 +110,7 @@
 #' study with an error that can be viewed with \code{DSI::datashield.errors()}.
 #' 
 #' 
-#' Server functions called: \code{lexisDS1}, \code{lexisDS2} and \code{lexisDS3} 
+#' Server functions called: \code{lexis1DS}, \code{lexis2DS} and \code{lexis3DS} 
 #' @param data a character string specifying the name of a data frame containing the
 #' survival data to be expanded.
 #' @param intervalWidth a numeric vector specifying the length of each interval.
@@ -232,7 +232,7 @@ ds.lexis<-function(data=NULL, intervalWidth=NULL, idCol=NULL, entryCol=NULL, exi
 
   # FIRST CALL TO SERVER SIDE TO IDENTIFY THE MAXIMUM FOLLOW UP TIME IN ANY
   # SOURCE. THE MAXIMUM I EACH SOURCE IS MASKED BY A RANDOM POSITIVE INCREMENT
-  calltext1 <- call("lexisDS1", exitCol)
+  calltext1 <- call("lexis1DS", exitCol)
   maxtime <- DSI::datashield.aggregate(datasources, calltext1)
 
   num.studies <- length(datasources)
@@ -260,10 +260,10 @@ intervalWidth.transmit<-paste0(as.character(intervalWidth),collapse=",")
 #SECOND CALL TO SERVER SIDE USES maxmaxtime AND intervalWidth TO SET
 #FOLLOW-UP TIME BREAKS IN EACH STUDY (ALL THE SAME)
   # call the main server side function
-  calltext2 <- call("lexisDS2", data, intervalWidth.transmit, maxmaxtime, idCol, entryCol, exitCol, statusCol, variables)
+  calltext2 <- call("lexis2DS", data, intervalWidth.transmit, maxmaxtime, idCol, entryCol, exitCol, statusCol, variables)
   DSI::datashield.assign(datasources, "messageobj", calltext2)
 
-  calltext3<- call("lexisDS3")
+  calltext3<- call("lexis3DS")
   DSI::datashield.assign(datasources, expandDF, calltext3)
 
 

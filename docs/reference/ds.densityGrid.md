@@ -11,7 +11,8 @@ ds.densityGrid(
   y = NULL,
   numints = 20,
   type = "combine",
-  datasources = NULL
+  datasources = NULL,
+  classConsistencyCheck = FALSE
 )
 ```
 
@@ -45,6 +46,11 @@ ds.densityGrid(
   specified the default set of connections will be used: see
   [`datashield.connections_default`](https://datashield.github.io/DSI/reference/datashield.connections_default.html).
 
+- classConsistencyCheck:
+
+  logical. If TRUE, checks that the input object has the same class
+  across all studies. Default FALSE.
+
 ## Value
 
 `ds.densityGrid` returns a grid density matrix.
@@ -67,5 +73,7 @@ Server function called: `densityGridDS`
 ## Author
 
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 
 ## Examples

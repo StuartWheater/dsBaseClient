@@ -22,7 +22,7 @@
 #' If \code{x} contains any missing value, the function removes those before
 #' the calculation of the skewness. 
 #' 
-#' Server functions called: \code{skewnessDS1} and \code{skewnessDS2}
+#' Server functions called: \code{skewness1DS} and \code{skewness2DS}
 #' 
 #' @param x a character string specifying the name of a numeric variable.
 #' @param method an integer value between 1 and 3 selecting one of the algorithms for computing skewness. 
@@ -99,7 +99,7 @@ ds.skewness <- function(x=NULL, method=1, type='both', datasources=NULL, classCo
     stop('Function argument "type" has to be either "both", "combine" or "split"', call.=FALSE)
 
   if (type=='split' | type=='both'){
-    calltext.split <- call("skewnessDS1", x, method)
+    calltext.split <- call("skewness1DS", x, method)
     output.split <- DSI::datashield.aggregate(datasources, calltext.split) 
     if(classConsistencyCheck){
       .checkClassConsistency(output.split)
@@ -118,7 +118,7 @@ ds.skewness <- function(x=NULL, method=1, type='both', datasources=NULL, classCo
     if (is.na(global.mean)){
       stop("FAILED: The number of valid observations in one or more studies is less than nfilter.tab. \n Check that by using the argument type=='split'", call.=FALSE)
     }else{
-      calltext.combined <- call("skewnessDS2", x, global.mean)
+      calltext.combined <- call("skewness2DS", x, global.mean)
       output.combined <- DSI::datashield.aggregate(datasources, calltext.combined) 
       if(classConsistencyCheck){
         .checkClassConsistency(output.combined)

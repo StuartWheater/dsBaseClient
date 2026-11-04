@@ -7,7 +7,7 @@
 #' @details Calculates the determinant of a square matrix on the server-side.
 #' This function is similar to the native R \code{determinant} function.
 #' 
-#' Server function called: \code{matrixDetDS2}
+#' Server function called: \code{matrixDet2DS}
 #' @param M1  a character string specifying the name of the matrix. 
 #' @param newobj a character string that provides the name for the output 
 #' variable that is stored on the data servers. Default \code{matrixdet.newobj}. 
@@ -103,7 +103,7 @@ ds.matrixDet<-function(M1=NULL, newobj=NULL, logarithm=FALSE, datasources=NULL){
   }
 
   # CALL THE MAIN SERVER SIDE ASSIGN FUNCTION
-  calltext <- call("matrixDetDS2", M1, logarithm)
+  calltext <- call("matrixDet2DS", M1, logarithm)
   DSI::datashield.assign(datasources, newobj, calltext)
 
 }

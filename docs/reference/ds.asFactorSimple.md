@@ -35,10 +35,7 @@ ds.asFactorSimple(
 
 ## Value
 
-an output vector of class factor to the serverside. In addition, returns
-a validity message with the name of the created object on the
-client-side and if creation fails an error message which can be viewed
-using datashield.errors().
+an output vector of class factor written to the serverside.
 
 ## Details
 
@@ -55,3 +52,5 @@ these things you will have to use the ds.asFactor function.
 ## Author
 
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

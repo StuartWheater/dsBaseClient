@@ -7,7 +7,7 @@
 #' This operation is only
 #' possible if the number of columns and rows of the matrix are the same.
 #' 
-#' Server function called: \code{matrixDetDS1}
+#' Server function called: \code{matrixDet1DS}
 #' 
 #' @param M1  a character string specifying the name of the matrix. 
 #' @param logarithm logical. If TRUE the logarithm of the modulus of the determinant
@@ -96,7 +96,7 @@ ds.matrixDet.report<-function(M1=NULL, logarithm=FALSE, datasources=NULL){
   }
 
   # CALL THE MAIN SERVER SIDE AGGREGATE FUNCTION
-  calltext <- call("matrixDetDS1", M1, logarithm)
+  calltext <- call("matrixDet1DS", M1, logarithm)
   output<-DSI::datashield.aggregate(datasources, calltext)
 
   return(list(matrix.determinant=output))

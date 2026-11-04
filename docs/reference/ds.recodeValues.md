@@ -60,10 +60,7 @@ ds.recodeValues(
 
 ## Value
 
-Assigns to each server a new variable with the recoded values. Also, two
-validity messages are returned to the client-side indicating whether the
-new object has been created in each data source and if so whether it is
-in a valid form.
+Assigns to each server a new variable with the recoded values.
 
 ## Details
 
@@ -80,4 +77,55 @@ identical vector of values in both arguments `values2replace.vector` and
 
 DataSHIELD Development Team
 
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+
 ## Examples
+
+``` r
+if (FALSE) { # \dontrun{
+
+  ## Version 6, for version 5 see the Wiki
+  
+  # connecting to the Armadillo/Opal servers
+
+  require('DSI')
+  require('DSMolgenisArmadillo')
+  require('DSOpal')
+  require('dsBaseClient')
+
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
+  builder <- DSI::newDSLoginBuilder()
+  builder$append(server = "study1", 
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/cnsim/CNSIM1", driver = "ArmadilloDriver")
+  builder$append(server = "study2", 
+                 url = "https://192.168.56.100:8443/", 
+                 user = "administrator", password = "datashield_test&", 
+                 table = "CNSIM.CNSIM2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
+  logindata <- builder$build()
+  
+  connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
+  
+  # Example 1: recode the levels of D$GENDER
+  ds.recodeValues(var.name = "D$GENDER", 
+                  values2replace.vector = c(0,1), 
+                  new.values.vector = c(10,20),
+                  newobj = 'gender_recoded',
+                  datasources = connections)
+                  
+  # Example 2: recode NAs in D$PM_BMI_CATEGORICAL          
+  ds.recodeValues(var.name = "D$PM_BMI_CATEGORICAL", 
+                  values2replace.vector = c(1,2), 
+                  new.values.vector = c(1,2),
+                  missing = 99, 
+                  newobj = 'bmi_recoded',
+                  datasources = connections)
+                 
+  # Clear the Datashield R sessions and logout                 
+  datashield.logout(connections) 
+  
+} # }   
+```

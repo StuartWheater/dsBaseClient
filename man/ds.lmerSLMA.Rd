@@ -217,7 +217,7 @@ standard optimizer available for lmer - this is the \code{nloptwrap} optimizer. 
 wish to apply a different optimizer - potentially one they have developed themselves -
 the development team can activate this argument so alternatives can be specified.
 
-Server function called: \code{lmerSLMADS2}
+Server function called: \code{lmerSLMA2DS}
 }
 \examples{
 \dontrun{

@@ -225,7 +225,7 @@ estimates and standard errors obtained using the default tolerance (\code{0.001}
 that has not formally converged with those obtained after convergence using the higher
 tolerance. 
 
-Server function called: \code{glmerSLMADS2}
+Server function called: \code{glmerSLMA2DS}
 }
 \examples{
 \dontrun{

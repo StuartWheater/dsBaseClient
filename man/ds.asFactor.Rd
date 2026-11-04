@@ -50,7 +50,7 @@ or as a matrix of dummy variables depending on the argument \code{fixed.dummy.va
 The matrix of dummy variables also depends on the argument
 \code{baseline.level}.
 
-ds.asFactor.R and its associated serverside functions asFactorDS1 and asFactorDS2
+ds.asFactor.R and its associated serverside functions asFactor1DS and asFactor2DS
 are to be used when you have variable that has up to 40 unique levels across
 all sources combined. If one of the sources does not contain any subjects at a
 particular level, that level will still be created as an empty category. In the
@@ -160,7 +160,7 @@ the matrix of dummy variables is:
 }
 
 
-Server functions called: \code{asFactorDS1} and \code{asFactorDS2}
+Server functions called: \code{asFactor1DS} and \code{asFactor2DS}
 }
 \examples{
 \dontrun{

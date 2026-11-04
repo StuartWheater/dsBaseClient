@@ -56,8 +56,7 @@ ds.asFactor(
 ## Value
 
 `ds.asFactor` returns the unique levels of the converted variable in
-ascending order and a validity message with the name of the created
-object on the client-side and the output matrix or vector in the
+ascending order. The output matrix or vector is written to the
 server-side.
 
 ## Details
@@ -67,8 +66,8 @@ as a vector or as a matrix of dummy variables depending on the argument
 `fixed.dummy.vars`. The matrix of dummy variables also depends on the
 argument `baseline.level`.
 
-ds.asFactor.R and its associated serverside functions asFactorDS1 and
-asFactorDS2 are to be used when you have variable that has up to 40
+ds.asFactor.R and its associated serverside functions asFactor1DS and
+asFactor2DS are to be used when you have variable that has up to 40
 unique levels across all sources combined. If one of the sources does
 not contain any subjects at a particular level, that level will still be
 created as an empty category. In the end all sources thus include a
@@ -181,11 +180,13 @@ variables is:
 | 0       | 0       | 0       | 1       | 0       |
 | 0       | 0       | 0       | 0       | 1       |
 
-Server functions called: `asFactorDS1` and `asFactorDS2`
+Server functions called: `asFactor1DS` and `asFactor2DS`
 
 ## Author
 
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 
 ## Examples
 
@@ -193,28 +194,28 @@ DataSHIELD Development Team
 if (FALSE) { # \dontrun{
 
   ## Version 6, for version 5 see Wiki
-  # Connecting to the Opal servers
+  # Connecting to the Armadillo/Opal servers
 
   require('DSI')
+  require('DSMolgenisArmadillo')
   require('DSOpal')
   require('dsBaseClient')
 
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/cnsim/CNSIM1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM3", driver = "OpalDriver")
+                 table = "CNSIM.CNSIM2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
 
-  # Log onto the remote Opal training servers
+  # Log onto the remote Armadillo/Opal training servers
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
 
   ds.asFactor(input.var.name = "D$PM_BMI_CATEGORICAL", 
@@ -223,14 +224,14 @@ if (FALSE) { # \dontrun{
                                            #from all studies is created
               fixed.dummy.vars = TRUE, #create a matrix of dummy variables
               baseline.level = 1,
-              datasources = connections)#all the Opal servers are used, in this case 3 
+              datasources = connections)#all the servers are used, in this case 2 
                                         #(see above the connection to the servers) 
   ds.asFactor(input.var.name = "D$PM_BMI_CATEGORICAL", 
               newobj.name = "fact.obj", 
               forced.factor.levels = c(2,3), #the variable is split in 2 levels
               fixed.dummy.vars = TRUE, #create a matrix of dummy variables
               baseline.level = 1,
-              datasources = connections[1])#only the first Opal server is used ("study1")
+              datasources = connections[1])#only the first server is used ("study1")
 
    # Clear the Datashield R sessions and logout  
    datashield.logout(connections) 

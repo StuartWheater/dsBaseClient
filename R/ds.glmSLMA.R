@@ -3,7 +3,7 @@
 #' with pooled co-analysis across studies being based on SLMA (Study Level Meta Analysis). 
 #' @details \code{ds.glmSLMA} specifies the structure of a Generalized Linear Model 
 #' to be fitted separately on each study or data source. Calls serverside functions
-#' glmSLMADS1 (aggregate),glmSLMADS2 (aggregate) and glmSLMADS.assign (assign). 
+#' glmSLMA1DS (aggregate),glmSLMA2DS (aggregate) and glmSLMADS.assign (assign). 
 #' From a mathematical perspective, the SLMA approach (using \code{ds.glmSLMA})
 #' differs fundamentally from the alternative approach using \code{ds.glm}.
 #' ds.glm fits the model iteratively across all studies together. At each
@@ -151,7 +151,7 @@
 #' or you may wish to allow more iterations.
 #' 
 #' 
-#' Server functions called: \code{glmSLMADS1}, \code{glmSLMADS2}, \code{glmSLMADS.assign}
+#' Server functions called: \code{glmSLMA1DS}, \code{glmSLMA2DS}, \code{glmSLMADS.assign}
 #' @param formula an object of class formula describing
 #' the model to be fitted. For more information see 
 #' \strong{Details}.  
@@ -184,7 +184,7 @@
 #' @param datasources a list of \code{\link[DSI]{DSConnection-class}} objects obtained after login. 
 #' If the \code{datasources} argument is not specified
 #' the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
-#' @return The serverside aggregate functions \code{glmSLMADS1} and \code{glmSLMADS2} return
+#' @return The serverside aggregate functions \code{glmSLMA1DS} and \code{glmSLMA2DS} return
 #' output to the clientside, while the assign function \code{glmSLMADS.assign} simply writes
 #' the glm object to the serverside
 #' created by the model fit on a given server as a permanent object on that same server.
@@ -465,7 +465,7 @@ ds.glmSLMA<-function(formula=NULL, family=NULL, offset=NULL, weights=NULL, combi
 
 #IDENTIFY THE CORRECT DIMENSION FOR START BETAs VIA CALLING FIRST COMPONENT OF glmDS
 
-   calltext.1 <- call('glmSLMADS1', formula, family, weights, offset, dataName)
+   calltext.1 <- call('glmSLMA1DS', formula, family, weights, offset, dataName)
   
    study.summary.0 <- DSI::datashield.aggregate(datasources, calltext.1)
 
@@ -603,10 +603,10 @@ if(at.least.one.study.data.error)
 
    DSI::datashield.assign(datasources, newobj, calltext.2)
 
-#NOW CALL MODIFIED AGGREGATE FUNCTION "glmSLMADS2" TO CREATE SUMMARY TO USE FOR META-ANALYSIS
+#NOW CALL MODIFIED AGGREGATE FUNCTION "glmSLMA2DS" TO CREATE SUMMARY TO USE FOR META-ANALYSIS
 #AND RETURN TO CLIENTSIDE
 
-    calltext.3 <- call('glmSLMADS2', formula, family, offset, weights, newobj, dataName)
+    calltext.3 <- call('glmSLMA2DS', formula, family, offset, weights, newobj, dataName)
 
     study.summary <- DSI::datashield.aggregate(datasources, calltext.3)
 

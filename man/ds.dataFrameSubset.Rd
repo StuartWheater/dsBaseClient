@@ -68,7 +68,7 @@ to specify a vector of the same length
 as the data frame to be subsetted in each study in which every element is 1 and 
 there are no missing values. For more information see the example 2 below. 
 
-Server functions called: \code{dataFrameSubsetDS1} and \code{dataFrameSubsetDS2}
+Server functions called: \code{dataFrameSubset1DS} and \code{dataFrameSubset2DS}
 }
 \examples{
 \dontrun{

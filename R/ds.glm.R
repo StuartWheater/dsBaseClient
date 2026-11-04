@@ -135,7 +135,7 @@
 #' R package metafor to meta-analyse the key parameters.
 #' 
 #' 
-#' Server functions called: \code{glmDS1} and \code{glmDS2}
+#' Server functions called: \code{glm1DS} and \code{glm2DS}
 #'
 #' @param formula an object of class formula describing
 #' the model to be fitted. For more information see 
@@ -368,7 +368,7 @@ ds.glm <- function(formula=NULL, data=NULL, family=NULL, offset=NULL, weights=NU
   beta.vect.temp <- paste0(as.character(beta.vect.next), collapse=",")
 
   # IDENTIFY THE CORRECT DIMENSION FOR START BETAs VIA CALLING FIRST COMPONENT OF glmDS
-  cally1 <- call('glmDS1', formula, family, weights, offset, data)
+  cally1 <- call('glm1DS', formula, family, weights, offset, data)
   study.summary.0 <- DSI::datashield.aggregate(datasources, cally1)
 
   at.least.one.study.data.error <- 0
@@ -481,7 +481,7 @@ ds.glm <- function(formula=NULL, data=NULL, family=NULL, offset=NULL, weights=NU
     message("Iteration ", iteration.count, "...")
 
   # NOW CALL SECOND COMPONENT OF glmDS TO GENERATE SCORE VECTORS AND INFORMATION MATRICES
-  cally2 <- call('glmDS2', formula, family, beta.vect.temp, offset, weights, data)
+  cally2 <- call('glm2DS', formula, family, beta.vect.temp, offset, weights, data)
   study.summary <- DSI::datashield.aggregate(datasources, cally2)
 
   # INTEGRATE RETURNED OUTPUT
@@ -513,7 +513,7 @@ ds.glm <- function(formula=NULL, data=NULL, family=NULL, offset=NULL, weights=NU
 			"Score vectors and information matrices therefore destroyed in all invalid studies\n",
 			"and model fitting terminated. This error is recorded in the log file but\n",
 			"please report it to the DataSHIELD team as we need to understand how\n",
-			"the controlled shutdown traps in glmDS1 have been circumvented\n\n")
+			"the controlled shutdown traps in glm1DS have been circumvented\n\n")
 
 	output.blocked.information.1<-"Potential disclosure risk in y.vect, X.mat, w.vect or offset"
 	output.blocked.information.2<-"or model overparameterized in at least one study."
@@ -522,7 +522,7 @@ ds.glm <- function(formula=NULL, data=NULL, family=NULL, offset=NULL, weights=NU
 	output.blocked.information.5<-"Score vectors and information matrices therefore destroyed in all invalid studies"
 	output.blocked.information.6<-"and model fitting terminated. This error is recorded in the log file but"
 	output.blocked.information.7<-"please also report it to the DataSHIELD team as we need to understand how"
-	output.blocked.information.8<-"the controlled shutdown traps in glmDS1 have been circumvented."
+	output.blocked.information.8<-"the controlled shutdown traps in glm1DS have been circumvented."
 
 
         return(list(output.blocked.information.1,

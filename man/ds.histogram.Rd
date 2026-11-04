@@ -115,7 +115,7 @@ In the argument  \code{vertical.axis} can be specified two types of histograms:
     is returned.}
     }
 
-Server function called: \code{histogramDS2}
+Server function called: \code{histogram2DS}
 }
 \examples{
 \dontrun{

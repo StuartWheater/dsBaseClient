@@ -256,11 +256,11 @@ ds.table <- function(rvar=NULL, cvar=NULL, stvar=NULL, report.chisq.tests=FALSE,
  {
  force.nfilter.transmit<-force.nfilter
  }
- #CALL THE asFactorDS1 SERVER SIDE FUNCTION (AN AGGREGATE FUNCTION)
+ #CALL THE asFactor1DS SERVER SIDE FUNCTION (AN AGGREGATE FUNCTION)
  # FOR rvar, cvar AND stvar  
  #TO DETERMINE ALL OF THE LEVELS REQUIRED
  
- rvar.asfactor.calltext <- call("asFactorDS1", rvar)
+ rvar.asfactor.calltext <- call("asFactor1DS", rvar)
  rvar.all.levels <- DSI::datashield.aggregate(datasources, rvar.asfactor.calltext)
  
  numstudies <- length(datasources)
@@ -282,7 +282,7 @@ ds.table <- function(rvar=NULL, cvar=NULL, stvar=NULL, report.chisq.tests=FALSE,
  ########################################################
  
  if(!is.null(cvar)){
-   cvar.asfactor.calltext <- call("asFactorDS1", cvar)
+   cvar.asfactor.calltext <- call("asFactor1DS", cvar)
    cvar.all.levels <- DSI::datashield.aggregate(datasources, cvar.asfactor.calltext)
    
    numstudies <- length(datasources)
@@ -306,7 +306,7 @@ ds.table <- function(rvar=NULL, cvar=NULL, stvar=NULL, report.chisq.tests=FALSE,
  ########################################################
  
  if(!is.null(stvar)){
-   stvar.asfactor.calltext <- call("asFactorDS1", stvar)
+   stvar.asfactor.calltext <- call("asFactor1DS", stvar)
    stvar.all.levels <- DSI::datashield.aggregate(datasources, stvar.asfactor.calltext)
    
    numstudies <- length(datasources)
@@ -1737,7 +1737,7 @@ if(table.assign)
 	{
 # CALL THE SECOND MAIN SERVER SIDE AGGREGATE FUNCTION
 
-	calltext <- call("tableDS2", newobj=newobj,rvar.transmit=rvar.transmit, cvar.transmit=cvar.transmit,
+	calltext <- call("table2DS", newobj=newobj,rvar.transmit=rvar.transmit, cvar.transmit=cvar.transmit,
                     stvar.transmit=stvar.transmit)
  
 	serverside.table.out<-DSI::datashield.aggregate(datasources, calltext)

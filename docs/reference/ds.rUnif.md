@@ -28,13 +28,15 @@ ds.rUnif(
 
 - min:
 
-  a numeric scalar that specifies the minimum value of the random
-  numbers in the distribution.
+  a numeric value that specifies the minimum value of the random numbers
+  in the distribution. A single value is used in every study; a vector
+  must have one value per study, with its k-th value used in study k.
 
 - max:
 
-  a numeric scalar that specifies the maximum value of the random
-  numbers in the distribution.
+  a numeric value that specifies the maximum value of the random numbers
+  in the distribution. A single value is used in every study; a vector
+  must have one value per study, with its k-th value used in study k.
 
 - newobj:
 
@@ -55,7 +57,9 @@ ds.rUnif(
 - force.output.to.k.decimal.places:
 
   an integer or an integer vector that forces the output random numbers
-  vector to have k decimals.
+  vector to have k decimals. A single value is used in every study; a
+  vector must have one value per study, with its k-th value used in
+  study k.
 
 - datasources:
 
@@ -67,12 +71,13 @@ ds.rUnif(
 
 ## Value
 
-`ds.Unif` returns random number vectors with a uniform distribution for
-each study, taking into account the values specified in each parameter
-of the function. The created vectors are stored in the server-side. If
-requested, it also returned to the client-side the full 626 lengths
-random seed vector generated in each source (see info for the argument
-`return.full.seed.as.set`).
+`ds.rUnif` writes a random number vector with a uniform distribution to
+the server-side in each study and returns a list to the client-side
+containing `integer.seed.as.set.by.source` (the trigger seed set in each
+source), `random.vector.length.by.source` (the length of the vector
+created in each source) and, if `return.full.seed.as.set` is TRUE,
+`full.seed.as.set` (the full 626 length random seed vector generated in
+each source).
 
 ## Details
 
@@ -115,46 +120,48 @@ Server functions called: `rUnifDS` and `setSeedDS`.
 
 DataSHIELD Development Team
 
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
 
   ## Version 6, for version 5 see the Wiki
-  # Connecting to the Opal servers
+  # Connecting to the Armadillo/Opal servers
 
   require('DSI')
+  require('DSMolgenisArmadillo')
   require('DSOpal')
   require('dsBaseClient')
 
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/cnsim/CNSIM1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM3", driver = "OpalDriver")
+                 table = "CNSIM.CNSIM2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
   
-  # Log onto the remote Opal training servers
+  # Log onto the remote Armadillo/Opal training servers
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
 
-  # Generating the vectors in the Opal servers
+  # Generating the vectors in the servers
 
-  ds.rUnif(samp.size = c(12,20,4), #the length of the vector created in each source is different 
-           min = as.character(c(0,2,5)), #different minumum value of the function in each source
-           max = as.character(c(2,5,9)), #different maximum value of the function in each source
+  ds.rUnif(samp.size = c(12,20), #the length of the vector created in each source is different 
+           min = c(0,2), #different minumum value of the function in each source
+           max = c(2,5), #different maximum value of the function in each source
            newobj = "Unif.dist",
            seed.as.integer = 234,
            return.full.seed.as.set = FALSE,
-           force.output.to.k.decimal.places = c(1,2,3),
-           datasources = connections)   #all the Opal servers are used, in this case 3 
+           force.output.to.k.decimal.places = c(1,2),
+           datasources = connections)   #all the servers are used, in this case 2 
                                         #(see above the connection to the servers) 
 
   ds.rUnif(samp.size = 12,
@@ -164,7 +171,7 @@ if (FALSE) { # \dontrun{
            seed.as.integer = 12345,
            return.full.seed.as.set = FALSE,
            force.output.to.k.decimal.places = 2,
-           datasources = connections[2]) #only the second  Opal server is used ("study2")
+           datasources = connections[2]) #only the second  server is used ("study2")
            
   # Clear the Datashield R sessions and logout           
   datashield.logout(connections)
