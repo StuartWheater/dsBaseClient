@@ -30,9 +30,6 @@ ds.matrixTranspose(M1 = NULL, newobj = NULL, datasources = NULL)
 ## Value
 
 `ds.matrixTranspose` returns to the server-side the transpose matrix.
-Also, two validity messages are returned to the client-side indicating
-whether the new object has been created in each data source and if so
-whether it is in a valid form.
 
 ## Details
 
@@ -47,6 +44,8 @@ Server function called: `matrixTransposeDS`
 
 DataSHIELD Development Team
 
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+
 ## Examples
 
 ``` r
@@ -54,25 +53,25 @@ if (FALSE) { # \dontrun{
 
  ## Version 6, for version 5 see the Wiki
   
-  # connecting to the Opal servers
+  # connecting to the Armadillo/Opal servers
 
   require('DSI')
+  require('DSMolgenisArmadillo')
   require('DSOpal')
   require('dsBaseClient')
 
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/cnsim/CNSIM1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM3", driver = "OpalDriver")
+                 table = "CNSIM.CNSIM2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
   
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 

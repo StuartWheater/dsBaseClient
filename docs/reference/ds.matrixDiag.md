@@ -55,9 +55,6 @@ ds.matrixDiag(
 ## Value
 
 `ds.matrixDiag` returns to the server-side the square matrix diagonal.
-Also, two validity messages are returned indicating whether the new
-object has been created in each data source and if so whether it is in a
-valid form.
 
 ## Details
 
@@ -97,5 +94,7 @@ Server function called: `matrixDiagDS`
 ## Author
 
 DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 
 ## Examples

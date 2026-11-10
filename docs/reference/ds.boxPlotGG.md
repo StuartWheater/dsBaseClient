@@ -62,3 +62,7 @@ ds.boxPlotGG(
 ## Value
 
 `ggplot` object
+
+## Author
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

@@ -58,22 +58,15 @@ This function calculates the mean, standard deviation (SD), N (number of
 observations) and the standard error of the mean (SEM) of a continuous
 variable broken down into subgroups defined by a single factor.
 
-There are important differences between `ds.meanSdGp` function compared
-to the function `ds.meanByClass`:
+`ds.meanSdGp` does not subset the data; it only calculates and reports
+the statistics. To create physical subsets use `ds.dataFrameSubset`.
 
-\(A\) `ds.meanSdGp` does not actually subset the data it simply
-calculates the required statistics and reports them. This means you
-cannot use this function if you wish to physically break the data into
-subsets. On the other hand, it makes the function very much faster than
-`ds.meanByClass` if you do not need to create physical subsets.  
-(B) `ds.meanByClass` allows you to specify up to three categorising
-factors, but `ds.meanSdGp` only allows one. However, this is not a
-serious problem. If you have two factors (e.g. sex with two levels
-`[0,1]` and `BMI.categorical` with three levels `[1,2,3]`) you simply
-need to create a new factor that combines the two together in a way that
-gives each combination of levels a different value in the new factor.
-So, in the example given, the calculation `newfactor = (3*sex) + BMI`
-gives you six values:  
+Only one categorising factor is allowed. If you have two factors (e.g.
+sex with two levels `[0,1]` and `BMI.categorical` with three levels
+`[1,2,3]`) you simply need to create a new factor that combines the two
+together in a way that gives each combination of levels a different
+value in the new factor. So, in the example given, the calculation
+`newfactor = (3*sex) + BMI` gives you six values:  
 (1) `sex = 0` and `BMI = 1` -\> `newfactor = 1`  
 (2) `sex = 0` and `BMI = 2` -\> `newfactor = 2`  
 (3) `sex = 0` and `BMI = 3` -\> `newfactor = 3`  
@@ -81,23 +74,10 @@ gives you six values:
 (5) `sex = 1` and `BMI = 2` -\> `newfactor = 5`  
 (6) `sex = 1` and `BMI = 3` -\> `newfactor = 6`  
 
-\(C\) At present, `ds.meanByClass` calculates the sample size in each
-group to mean the total sample size (i.e. it includes all observations
-in each group regardless of whether or not they include missing values
-for the continuous variable or the factor). The calculation of sample
-size in each group by `ds.meanSdGp` always reports the number of
-observations that are non-missing both for the continuous variable and
-the factor. This makes sense - in the case of `ds.meanByClass`, the
-total size of the physical subsets was important, but when it comes down
-only to `ds.meanSdGp` which undertakes analysis without physical
-subsetting, it is only the observations with non-missing values in both
-variables that contribute to the calculation of means and SDs within
-each group and so it is logical to consider those counts as primary. The
-only reference `ds.meanSdGp` makes to missing counts is in the reporting
-of `Ntotal` and `Nmissing` overall (ie not broken down by group).
-
-For the future, we plan to extend `ds.meanByClass` to report both total
-and non-missing counts in subgroups.
+The sample size reported for each group is the number of observations
+that are non-missing for both the continuous variable and the factor,
+because only those contribute to the group means and SDs. Missing counts
+are reported only overall, as `Ntotal` and `Nmissing`.
 
 Depending on the variable `type` can be carried out different
 analysis:  
@@ -109,11 +89,8 @@ Server function called: `meanSdGpDS`
 
 ## See also
 
-[`ds.subsetByClass`](ds.subsetByClass.md) to subset by the classes of
-factor vector(s).
-
-[`ds.subset`](ds.subset.md) to subset by complete cases (i.e. removing
-missing values), threshold, columns and rows.
+[`ds.dataFrameSubset`](ds.dataFrameSubset.md) to subset a data frame by
+rows or columns.
 
 ## Author
 
@@ -128,25 +105,25 @@ if (FALSE) { # \dontrun{
 
  ## Version 6, for version 5 see the Wiki
   
-  # connecting to the Opal servers
+  # connecting to the Armadillo/Opal servers
 
   require('DSI')
+  require('DSMolgenisArmadillo')
   require('DSOpal')
   require('dsBaseClient')
 
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "SURVIVAL.EXPAND_NO_MISSING1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/survival/EXPAND_NO_MISSING1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "SURVIVAL.EXPAND_NO_MISSING2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "SURVIVAL.EXPAND_NO_MISSING3", driver = "OpalDriver")
+                 table = "SURVIVAL.EXPAND_NO_MISSING2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
   
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 

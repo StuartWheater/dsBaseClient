@@ -30,3 +30,7 @@ Structure of the created table:
 Column 'x': Names on the X axis of the boxplot, aka name of the vector
 (vector argument)  
 Column 'value': Values for that variable  
+
+## Author
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

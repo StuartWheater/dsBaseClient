@@ -218,12 +218,6 @@ returned if the argument combine.with.metafor is set to TRUE. Otherwise,
 users can take the `betamatrix.valid` and `sematrix.valid` matrices and
 enter them into their meta-analysis package of choice.
 
-`is.object.created` and `validity.check` are standard items returned by
-an assign function when the designated newobj appears to have been
-successfully created on the serverside at each study. This output is
-produced specifically by the assign function `glmSLMADS.assign` that
-writes out the glm object on the serverside
-
 ## Details
 
 `ds.glmSLMA` specifies the structure of a Generalized Linear Model to be
@@ -404,37 +398,39 @@ Server functions called: `glmSLMADS1`, `glmSLMADS2`, `glmSLMADS.assign`
 
 Paul Burton, for DataSHIELD Development Team 07/07/20
 
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
 
  ## Version 6, for version 5 see Wiki
-  # Connecting to the Opal servers
+  # Connecting to the Armadillo/Opal servers
   
   require('DSI')
+  require('DSMolgenisArmadillo')
   require('DSOpal')
   require('dsBaseClient')
   
   # Example 1: Fitting GLM for survival analysis
   # For this analysis we need to load survival data from the server 
   
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "SURVIVAL.EXPAND_NO_MISSING1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/survival/EXPAND_NO_MISSING1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "SURVIVAL.EXPAND_NO_MISSING2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "SURVIVAL.EXPAND_NO_MISSING3", driver = "OpalDriver")
+                 table = "SURVIVAL.EXPAND_NO_MISSING2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
   
-  # Log onto the remote Opal training servers
+  # Log onto the remote Armadillo/Opal training servers
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
   
   # Fit the GLM 
@@ -473,20 +469,17 @@ if (FALSE) { # \dontrun{
   
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/cnsim/CNSIM1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM3", driver = "OpalDriver")
+                 table = "CNSIM.CNSIM2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
   
-  # Log onto the remote Opal training servers
+  # Log onto the remote Armadillo/Opal training servers
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
   
   # Fit the logistic regression model

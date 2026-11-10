@@ -50,3 +50,7 @@ Column 'x': Names on the X axis of the boxplot, aka variables to plot
 Column 'value': Values for that variable (raw data of columns rbinded)  
 Column 'group': (Optional) Values of the grouping variable  
 Column 'group2': (Optional) Values of the second grouping variable  
+
+## Author
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

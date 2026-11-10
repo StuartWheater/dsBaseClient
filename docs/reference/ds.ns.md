@@ -83,3 +83,5 @@ directly specify a natural spline term in a model.
 ## Author
 
 Demetris Avraam for DataSHIELD Development Team
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands

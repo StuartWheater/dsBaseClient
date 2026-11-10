@@ -83,34 +83,36 @@ frame.
 
 DataSHIELD Development Team
 
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+
 ## Examples
 
 ``` r
 if (FALSE) { # \dontrun{
 
   ## Version 6, for version 5 see the Wiki
-  # Connecting to the Opal servers
+  # Connecting to the Armadillo/Opal servers
 
   require('DSI')
+  require('DSMolgenisArmadillo')
   require('DSOpal')
   require('dsBaseClient')
 
+  armadillo_url <- "http://192.168.56.100:8080/"
+  token <- armadillo.get_credentials(armadillo_url)
   builder <- DSI::newDSLoginBuilder()
   builder$append(server = "study1", 
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM1", driver = "OpalDriver")
+                 url = armadillo_url, 
+                 token = token@access_token, 
+                 table = "datashield/cnsim/CNSIM1", driver = "ArmadilloDriver")
   builder$append(server = "study2", 
-                 url = "http://192.168.56.100:8080/", 
+                 url = "https://192.168.56.100:8443/", 
                  user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM2", driver = "OpalDriver")
-  builder$append(server = "study3",
-                 url = "http://192.168.56.100:8080/", 
-                 user = "administrator", password = "datashield_test&", 
-                 table = "CNSIM.CNSIM3", driver = "OpalDriver")
+                 table = "CNSIM.CNSIM2", driver = "OpalDriver",
+                 options = "list(ssl_verifyhost=0, ssl_verifypeer=0)")
   logindata <- builder$build()
   
-  # Log onto the remote Opal training servers
+  # Log onto the remote Armadillo/Opal training servers
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
 
   # Changing the reference group in the server-side
@@ -122,8 +124,9 @@ if (FALSE) { # \dontrun{
 
       # define a vector with the new levels and recode the initial levels
       newNames <- c("normal", "overweight", "obesity")
-      ds.recodeLevels(x = "D$PM_BMI_CATEGORICAL",
-                      newCategories = newNames,
+      ds.recodeValues(var.name = "D$PM_BMI_CATEGORICAL",
+                      values2replace.vector = c(1, 2, 3),
+                      new.values.vector = newNames,
                       newobj = "bmi_new",
                       datasources = connections)
 
@@ -143,10 +146,11 @@ if (FALSE) { # \dontrun{
 
     # Example 2: change the reference and re-order by the reference level
       # If re-ordering is sought, the action is completed but a warning is issued
-      ds.recodeLevels(x = "D$PM_BMI_CATEGORICAL",
-                      newCategories = newNames,
+      ds.recodeValues(var.name = "D$PM_BMI_CATEGORICAL",
+                      values2replace.vector = c(1, 2, 3),
+                      new.values.vector = newNames,
                       newobj = "bmi_new",
-                     datasources = connections)
+                      datasources = connections)
       ds.changeRefGroup(x = "bmi_new",
                         ref = "obesity",
                         newobj = "bmi_ob",

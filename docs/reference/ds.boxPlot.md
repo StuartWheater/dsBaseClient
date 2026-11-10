@@ -62,4 +62,8 @@ ds.boxPlot(
 
 `ggplot` object
 
+## Author
+
+Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
+
 ## Examples

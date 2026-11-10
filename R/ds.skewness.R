@@ -5,7 +5,7 @@
 #' @details This function is similar to the function \code{skewness} in R package \code{e1071}.
 #' 
 #' The function calculates the skewness of an input variable \code{x} 
-#' with three different methods: \cr
+#' with three different methods \cr
 #' (1)  If \code{method} is set to 1 the following formula is used \eqn{ skewness= \frac{\sum_{i=1}^{N} (x_i - \bar(x))^3 /N}{(\sum_{i=1}^{N} ((x_i - \bar(x))^2) /N)^(3/2) }},
 #' where \eqn{ \bar{x} } is the mean of x and \eqn{N} is the number of observations.\cr
 #' (2) If \code{method} is set to 2
