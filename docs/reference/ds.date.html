@@ -136,7 +136,8 @@ see <code><a href="https://datashield.github.io/DSI/reference/datashield.connect
 <span class="r-in"><span>  <span class="fu">ds.date</span><span class="op">(</span>x<span class="op">=</span><span class="st">"diagnosis_date"</span>, type <span class="op">=</span> <span class="st">"extractdate"</span>,</span></span>
 <span class="r-in"><span>          newobj <span class="op">=</span> <span class="st">"diagnosis_year"</span>, unit <span class="op">=</span> <span class="st">"years"</span>, add.column <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Example 2: Create a new column by extracting year from an object. This will result in an error since</span></span></span>
+<span class="r-in"><span>  <span class="co"># Example 2: Create a new column by extracting year from an object.</span></span></span>
+<span class="r-in"><span>  <span class="co"># This will result in an error since</span></span></span>
 <span class="r-in"><span>  <span class="co"># creating a new column option requires a dataframe input.</span></span></span>
 <span class="r-in"><span>  <span class="fu">ds.date</span><span class="op">(</span>x<span class="op">=</span><span class="st">"diagnosis_date"</span>, type <span class="op">=</span> <span class="st">"extractdate"</span>,</span></span>
 <span class="r-in"><span>          newobj <span class="op">=</span> <span class="st">"diagnosis_year"</span>, unit <span class="op">=</span> <span class="st">"years"</span>, add.column <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
@@ -145,7 +146,8 @@ see <code><a href="https://datashield.github.io/DSI/reference/datashield.connect
 <span class="r-in"><span>  <span class="fu">ds.date</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"diagnosis_year"</span>, <span class="st">"D$diag_month"</span>, <span class="st">"D$diag_day"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"makedate"</span>,</span></span>
 <span class="r-in"><span>          newobj <span class="op">=</span> <span class="st">"combined_date"</span>, add.column <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># Example 4: Create a new object by calculating time between one column and one object in months.</span></span></span>
+<span class="r-in"><span>  <span class="co"># Example 4: Create a new object by calculating time between one column and one object</span></span></span>
+<span class="r-in"><span>  <span class="co"># in months.</span></span></span>
 <span class="r-in"><span>  <span class="fu">ds.date</span><span class="op">(</span>x<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"diagnosis_date"</span>, <span class="st">"D$date_death"</span><span class="op">)</span>, type <span class="op">=</span> <span class="st">"timebetween"</span>,</span></span>
 <span class="r-in"><span>          newobj <span class="op">=</span> <span class="st">"timebetween.months"</span>, unit <span class="op">=</span> <span class="st">"months"</span>, add.column <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>

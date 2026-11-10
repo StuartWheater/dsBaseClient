@@ -9,12 +9,15 @@
 #' Server function called: \code{predictDS2}
 #' 
 #' @param name The client-side return object from \code{ds.glm}. 
-#' @param newdataname A character string specifying the name of the new dataset to be used for predictions.
-#' @param type A character string specifying the type of prediction. Options are \code{"response"} or \code{"link"}.
+#' @param newdataname A character string specifying the name of the new dataset to be used for
+#' predictions.
+#' @param type A character string specifying the type of prediction. Options are \code{"response"}
+#' or \code{"link"}.
 #' @param newobj A character string specifying the name of the output object created on the server. 
 #' Default is \code{"new.predictions"}.
 #' @param traindataname A character string specifying the name of the dataset used for model training.
-#' @param na.action A character string to specify the action to take if missing values are present. Default is \code{"na.pass"}.
+#' @param na.action A character string to specify the action to take if missing values are present.
+#' Default is \code{"na.pass"}.
 #' @param datasources A list of \code{\link[DSI]{DSConnection-class}} objects obtained after login. 
 #' If the \code{datasources} argument is not specified the default set of connections will be used: 
 #' see \code{\link[DSI]{datashield.connections_default}}.
