@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("ds.Boole::discctrl::setup")
+# context("ds.boole::discctrl::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TSC", "LAB_TRIG"))
 
@@ -24,9 +24,9 @@ test_that("setup", {
 #
 # Tests
 #
-# context("ds.Boole::discctrl")
+# context("ds.boole::discctrl")
 test_that("simple rep", {
-    expect_error(ds.Boole("D$LAB_TSC", "D$LAB_TRIG", "=="), "There are some DataSHIELD errors, list them with datashield.errors()", fixed = TRUE)
+    expect_error(ds.boole("D$LAB_TSC", "D$LAB_TRIG", "=="), "There are some DataSHIELD errors, list them with datashield.errors()", fixed = TRUE)
     
     res_errors <- DSI::datashield.errors()
 
@@ -43,7 +43,7 @@ test_that("simple rep", {
 # Done
 #
 
-# context("ds.Boole::discctrl::shutdown")
+# context("ds.boole::discctrl::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D"))
@@ -51,4 +51,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-# context("ds.Boole::discctrl::done")
+# context("ds.boole::discctrl::done")

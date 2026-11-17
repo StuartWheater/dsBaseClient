@@ -39,12 +39,13 @@
 
 Burton P, Wilson R, Butters O, Ryser-Welch P, Westerberg A, Abarrategui
 L, Villegas-Diaz R, Avraam D, Marcon Y, Bishop T, Gaye A,
-Escribà-Montagut X, Wheater S, Cadman T (????). *dsBaseClient:
+Escribà-Montagut X, Wheater S, Cadman T (2026). *dsBaseClient:
 'DataSHIELD' Client Side Base Functions*. R package version 7.0.0.9000.
 
     @Manual{,
       title = {dsBaseClient: 'DataSHIELD' Client Side Base Functions},
       author = {Paul Burton and Rebecca Wilson and Olly Butters and Patricia Ryser-Welch and Alex Westerberg and Leire Abarrategui and Roberto Villegas-Diaz and Demetris Avraam and Yannick Marcon and Tom Bishop and Amadou Gaye and Xavier Escribà-Montagut and Stuart Wheater and Tim Cadman},
+      year = {2026},
       note = {R package version 7.0.0.9000},
     }
 

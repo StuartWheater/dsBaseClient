@@ -5,7 +5,6 @@
 <url><loc>/index.html</loc></url>
 <url><loc>/reference/checkClass.html</loc></url>
 <url><loc>/reference/computeWeightedMeans.html</loc></url>
-<url><loc>/reference/ds.Boole.html</loc></url>
 <url><loc>/reference/ds.abs.html</loc></url>
 <url><loc>/reference/ds.asCharacter.html</loc></url>
 <url><loc>/reference/ds.asDataMatrix.html</loc></url>
@@ -18,6 +17,7 @@
 <url><loc>/reference/ds.asNumeric.html</loc></url>
 <url><loc>/reference/ds.assign.html</loc></url>
 <url><loc>/reference/ds.auc.html</loc></url>
+<url><loc>/reference/ds.boole.html</loc></url>
 <url><loc>/reference/ds.boxPlot.html</loc></url>
 <url><loc>/reference/ds.boxPlotGG.html</loc></url>
 <url><loc>/reference/ds.boxPlotGG_data_Treatment.html</loc></url>

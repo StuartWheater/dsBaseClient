@@ -12,7 +12,7 @@
 "ds.asNumeric::perf:0","8.631","0.5","2"
 "ds.assign::perf::0","10.40","0.5","2"
 "ds.auc::perf::0","9.513","0.5","2"
-"ds.Boole::perf::0","1.676","0.5","2"
+"ds.boole::perf::0","1.676","0.5","2"
 "ds.boxPlot::perf::0","2.295","0.5","2"
 "ds.boxPlotGG::perf::0","2.628","0.5","2"
 "ds.bp_standards::perf::0","7.994","0.5","2"

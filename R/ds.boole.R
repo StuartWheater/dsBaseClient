@@ -11,7 +11,7 @@
 #' will then take the value 1 in the final vector (after multiplication)
 #' while all others will take the value 0. Instead the combination using  \code{OR} operator
 #' can be obtained by the sum of two or more vectors and applying   
-#' \code{ds.Boole} using the operator \code{>= 1}. 
+#' \code{ds.boole} using the operator \code{>= 1}. 
 #' 
 #' In \code{na.assign} if \code{'NA'} is specified, the missing values 
 #' remain as \code{NA}s in the output vector. If \code{'1'} or \code{'0'} is specified the 
@@ -37,7 +37,7 @@
 #' @param datasources a list of \code{\link[DSI]{DSConnection-class}} 
 #' objects obtained after login. If the \code{datasources} argument is not specified
 #' the default set of connections will be used: see \code{\link[DSI]{datashield.connections_default}}.
-#' @return \code{ds.Boole} returns the object specified by the \code{newobj} argument
+#' @return \code{ds.boole} returns the object specified by the \code{newobj} argument
 #' which is written to the server-side.
 #' @examples 
 #' 
@@ -70,7 +70,7 @@
 #'   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
 #'
 #'   # Generating Boolean indicators
-#'   ds.Boole(V1 = "D$LAB_TSC",
+#'   ds.boole(V1 = "D$LAB_TSC",
 #'            V2 = "D$LAB_TRIG",
 #'            Boolean.operator = ">",
 #'            numeric.output = TRUE, #Output vector of 0 and 1
@@ -78,7 +78,7 @@
 #'            newobj = "Boole.vec",
 #'            datasources = connections[1]) #only the first server is used ("study1")
 #'            
-#'   ds.Boole(V1 = "D$LAB_TSC",
+#'   ds.boole(V1 = "D$LAB_TSC",
 #'            V2 = "D$LAB_TRIG",
 #'            Boolean.operator = "<",
 #'            numeric.output = FALSE, #Output vector of TRUE and FALSE 
@@ -86,7 +86,7 @@
 #'            newobj = "Boole.vec",
 #'            datasources = connections[2]) #only the second server is used ("study2") 
 #'                       
-#'   ds.Boole(V1 = "D$LAB_TSC",
+#'   ds.boole(V1 = "D$LAB_TSC",
 #'            V2 = "D$LAB_TRIG",
 #'            Boolean.operator = ">",
 #'            numeric.output = TRUE, #Output vector of 0 and 1
@@ -102,7 +102,7 @@
 #' @author Tim Cadman, Genomics Coordination Centre, UMCG, Netherlands
 #' @export
 #'
-ds.Boole<-function(V1=NULL, V2=NULL, Boolean.operator=NULL, numeric.output=TRUE, na.assign="NA",newobj=NULL, datasources=NULL){
+ds.boole<-function(V1=NULL, V2=NULL, Boolean.operator=NULL, numeric.output=TRUE, na.assign="NA",newobj=NULL, datasources=NULL){
 
   datasources <- .set_datasources(datasources)
 
@@ -172,4 +172,4 @@ ds.Boole<-function(V1=NULL, V2=NULL, Boolean.operator=NULL, numeric.output=TRUE,
   DSI::datashield.assign(datasources, newobj, calltext)
 
 }
-#ds.Boole
+#ds.boole

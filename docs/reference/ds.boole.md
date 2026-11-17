@@ -7,7 +7,7 @@ can be of class logical (`TRUE/FALSE`) or numeric (`1/0`).
 ## Usage
 
 ``` r
-ds.Boole(
+ds.boole(
   V1 = NULL,
   V2 = NULL,
   Boolean.operator = NULL,
@@ -61,7 +61,7 @@ ds.Boole(
 
 ## Value
 
-`ds.Boole` returns the object specified by the `newobj` argument which
+`ds.boole` returns the object specified by the `newobj` argument which
 is written to the server-side.
 
 ## Details
@@ -71,7 +71,7 @@ obtained by multiplying two or more binary/Boolean vectors together. In
 this way, observations taking the value 1 in every vector will then take
 the value 1 in the final vector (after multiplication) while all others
 will take the value 0. Instead the combination using `OR` operator can
-be obtained by the sum of two or more vectors and applying `ds.Boole`
+be obtained by the sum of two or more vectors and applying `ds.boole`
 using the operator `>= 1`.
 
 In `na.assign` if `'NA'` is specified, the missing values remain as
@@ -118,7 +118,7 @@ if (FALSE) { # \dontrun{
   connections <- DSI::datashield.login(logins = logindata, assign = TRUE, symbol = "D") 
 
   # Generating Boolean indicators
-  ds.Boole(V1 = "D$LAB_TSC",
+  ds.boole(V1 = "D$LAB_TSC",
            V2 = "D$LAB_TRIG",
            Boolean.operator = ">",
            numeric.output = TRUE, #Output vector of 0 and 1
@@ -126,7 +126,7 @@ if (FALSE) { # \dontrun{
            newobj = "Boole.vec",
            datasources = connections[1]) #only the first server is used ("study1")
            
-  ds.Boole(V1 = "D$LAB_TSC",
+  ds.boole(V1 = "D$LAB_TSC",
            V2 = "D$LAB_TRIG",
            Boolean.operator = "<",
            numeric.output = FALSE, #Output vector of TRUE and FALSE 
@@ -134,7 +134,7 @@ if (FALSE) { # \dontrun{
            newobj = "Boole.vec",
            datasources = connections[2]) #only the second server is used ("study2") 
                       
-  ds.Boole(V1 = "D$LAB_TSC",
+  ds.boole(V1 = "D$LAB_TSC",
            V2 = "D$LAB_TRIG",
            Boolean.operator = ">",
            numeric.output = TRUE, #Output vector of 0 and 1

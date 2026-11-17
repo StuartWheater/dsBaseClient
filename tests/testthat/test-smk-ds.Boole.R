@@ -13,7 +13,7 @@
 # Set up
 #
 
-# context("ds.Boole::smk::setup")
+# context("ds.boole::smk::setup")
 
 connect.studies.dataset.cnsim(list("LAB_TSC", "LAB_TRIG"))
 
@@ -25,9 +25,9 @@ test_that("setup", {
 # Tests
 #
 
-# context("ds.Boole::smk::variable")
+# context("ds.boole::smk::variable")
 test_that("simple boole, variable", {
-    res <- ds.Boole("D$LAB_TSC", "D$LAB_TRIG", "==")
+    res <- ds.boole("D$LAB_TSC", "D$LAB_TRIG", "==")
 
 
     res.boole <- ds.summary("boole.newobj")
@@ -71,9 +71,9 @@ test_that("simple boole, variable", {
     expect_equal(res.boole$sim3$`quantiles & mean`[[8]], 0.0)
 })
 
-# context("ds.Boole::smk::small neg constant V2")
+# context("ds.boole::smk::small neg constant V2")
 test_that("simple boole, small neg constant V2", {
-    res <- ds.Boole("D$LAB_TRIG", "-1", "<", numeric.output = TRUE, newobj = "boole01.obj")
+    res <- ds.boole("D$LAB_TRIG", "-1", "<", numeric.output = TRUE, newobj = "boole01.obj")
 
 
     res.boole <- ds.summary("boole01.obj")
@@ -116,9 +116,9 @@ test_that("simple boole, small neg constant V2", {
     expect_equal(res.boole$sim3$`quantiles & mean`[[8]], 0.023322781)
 })
 
-# context("ds.Boole::smk::big neg constant V2")
+# context("ds.boole::smk::big neg constant V2")
 test_that("simple boole, big neg constant V2", {
-    res <- ds.Boole("D$LAB_TRIG", "-10", "<", numeric.output = TRUE, newobj = "boole02.obj")
+    res <- ds.boole("D$LAB_TRIG", "-10", "<", numeric.output = TRUE, newobj = "boole02.obj")
   
 
     res.boole <- ds.summary("boole02.obj")
@@ -163,7 +163,7 @@ test_that("simple boole, big neg constant V2", {
 
 test_that("fails if the object does not exist", {
     expect_error(
-        ds.Boole(V1 = "nonexistent_object", V2 = "1", Boolean.operator = "=="),
+        ds.boole(V1 = "nonexistent_object", V2 = "1", Boolean.operator = "=="),
         "There are some DataSHIELD errors, list them with datashield.errors()",
         fixed = TRUE
     )
@@ -178,7 +178,7 @@ test_that("fails if the object does not exist", {
 # Done
 #
 
-# context("ds.Boole::smk::shutdown")
+# context("ds.boole::smk::shutdown")
 
 test_that("shutdown", {
     ds_expect_variables(c("D", "boole.newobj", "boole01.obj", "boole02.obj"))
@@ -186,4 +186,4 @@ test_that("shutdown", {
 
 disconnect.studies.dataset.cnsim()
 
-# context("ds.Boole::smk::done")
+# context("ds.boole::smk::done")

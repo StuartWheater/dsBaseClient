@@ -39,7 +39,7 @@ test_that("check results", {
         "ds.asMatrix",
         "ds.asNumeric",
         "ds.assign",
-        "ds.Boole",
+        "ds.boole",
         "ds.boxPlot",
         "ds.c",
         "ds.cbind",

@@ -2,8 +2,6 @@
 
 ## All functions
 
-- [`ds.Boole()`](ds.Boole.md) : Converts a server-side R object into
-  Boolean indicators
 - [`ds.abs()`](ds.abs.md) : Computes the absolute values of a variable
 - [`ds.asCharacter()`](ds.asCharacter.md) : Converts a server-side R
   object into a character class
@@ -26,6 +24,8 @@
 - [`ds.assign()`](ds.assign.md) : Assigns an R object to a name in the
   server-side
 - [`ds.auc()`](ds.auc.md) : Calculates the Area under the curve (AUC)
+- [`ds.boole()`](ds.boole.md) : Converts a server-side R object into
+  Boolean indicators
 - [`ds.boxPlot()`](ds.boxPlot.md) : Draw boxplot
 - [`ds.boxPlotGG()`](ds.boxPlotGG.md) : Renders boxplot
 - [`ds.boxPlotGG_data_Treatment()`](ds.boxPlotGG_data_Treatment.md) :
