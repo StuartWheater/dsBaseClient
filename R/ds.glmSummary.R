@@ -79,17 +79,16 @@
 #'
 ds.glmSummary <- function(x.name, newobj=NULL, datasources=NULL) {
 
-  datasources <- .set_datasources(datasources)
+  datasources <- .resolveDatasources(datasources)
 
   # check if a value has been provided for x
   if(is.null(x.name)||!is.character(x.name)){
-    stop("Error: x.name must denote a character string naming the glm object on the serverside to be summarised", call.=FALSE)
+    supplied <- .describeSupplied(x.name) # nolint: object_usage_linter. Used in the cli template
+    cli_abort("{.arg x.name} must be a character string that names a glm object on the server, not {supplied}.")
   }
 
   # create a name by default if the user did not provide a name for the new object
-  if (is.null(newobj)) {
-	  newobj <- "summary_glm.newobj"
-  }
+  newobj <- .resolveNewobjName(newobj, "summary_glm.newobj")
   
   # PREPARE AND CALL THE ASSIGN FUNCTION TO PREPARE THE summary_glm OBJECT ON THE SERVERSIDE
 	calltext1 <- call("glmSummaryDS.as", x.name)

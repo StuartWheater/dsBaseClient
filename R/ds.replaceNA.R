@@ -92,19 +92,15 @@
 #' 
 ds.replaceNA <- function(x=NULL, forNA=NULL, newobj=NULL, datasources=NULL){
 
-  datasources <- .set_datasources(datasources)
+  datasources <- .resolveDatasources(datasources)
 
-  if(is.null(x)){
-    stop("Please provide the name of a vector!", call.=FALSE)
-  }
+  .checkArgProvided(x, "the name of a vector")
 
   # check if replacement values have been provided
-  if(is.null(forNA)){
-    stop("Please provide a list of replacement values!", call.=FALSE)
-  }else{
-    if(length(forNA) != length(datasources)){
-      stop("'forNA' must be of the same length as the number of datasources/studies!", call.=FALSE)
-    }
+  .checkArgProvided(forNA, "a list of replacement values")
+  if(length(forNA) != length(datasources)){
+    supplied <- .describeSupplied(forNA) # nolint: object_usage_linter. Used in the cli template
+    cli_abort(c("{.arg forNA} must have one element per study.", "x" = "{.arg forNA} is {supplied}, which has {length(forNA)} element{?s} for {length(datasources)} stud{?y/ies}."))
   }
 
   for(i in 1:length(datasources)){
@@ -114,18 +110,16 @@ ds.replaceNA <- function(x=NULL, forNA=NULL, newobj=NULL, datasources=NULL){
     cally <- call("numNaDS", x)
     numNAs <- DSI::datashield.aggregate(datasources[i], cally)
     if(length(forNA[[i]]) != 1 & length(forNA[[i]]) != numNAs[[1]]$numNA){
-      message("The number of replacement values must be of length 1 or of the same length as the number of missing values.")
-      stop(paste0("This is not the case in ", names(datasources)[i]), call.=FALSE)
+      supplied <- .describeSupplied(forNA[[i]])
+      cli_abort(c("Replacement values must have length 1 or match the number of missing values.", "i" = "{.val {names(datasources)[i]}} has {numNAs[[1]]$numNA} missing value{?s}.", "x" = "{.arg forNA} gives {supplied} for it."))
     }
   }
 
-  if(is.null(newobj)){
-    newobj <- "replacena.newobj"
-  }
+  newobj <- .resolveNewobjName(newobj, "replacena.newobj")
 
   # call the server side function and doo the replacement for each server
   for(i in 1:length(datasources)){
-    message(paste0("--Processing ", names(datasources)[i], "..."))
+    cli_inform("Processing {.val {names(datasources)[i]}}...")
     cally <- call("replaceNaDS", x, forNA[[i]])
     DSI::datashield.assign(datasources[i], newobj, cally)
 
