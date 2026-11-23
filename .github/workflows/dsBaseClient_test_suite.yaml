@@ -213,7 +213,7 @@ jobs:
             junit_rep <- JunitReporter$new(file = file.path(getwd(), "test_results_dsbase.xml"));
             progress_rep <- ProgressReporter$new(max_failures = 999999);
             multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
-            options("datashield.return_errors" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
+            options("datashield.errors.print" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
             test_dir("tests/testthat", filter = "${{ matrix.filter }}", reporter = multi_rep, stop_on_failure = FALSE)' || R_EXIT=$?
           cat test_console_output_dsbase.txt
           n_tests=$(grep -c '<testcase' test_results_dsbase.xml || true)
@@ -240,7 +240,7 @@ jobs:
             junit_rep <- JunitReporter$new(file = file.path(getwd(), "test_results_dsdanger.xml"));
             progress_rep <- ProgressReporter$new(max_failures = 999999);
             multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
-            options("datashield.return_errors" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
+            options("datashield.errors.print" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
             test_dir("tests/testthat", filter = "${{ env.TEST_FILTER_DSDANGER }}", reporter = multi_rep, stop_on_failure = FALSE)' || R_EXIT=$?
           cat test_console_output_dsdanger.txt
           n_tests=$(grep -c '<testcase' test_results_dsdanger.xml || true)
@@ -522,7 +522,7 @@ jobs:
                 junit_rep <- testthat::JunitReporter$new(file = file.path(getwd(), "test_results_dsbase.xml"));
                 progress_rep <- testthat::ProgressReporter$new(max_failures = 999999);
                 multi_rep <- testthat::MultiReporter$new(reporters = list(progress_rep, junit_rep));
-                options("datashield.return_errors" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
+                options("datashield.errors.print" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
                 testthat::test_package("${{ env.PROJECT_NAME }}", filter = "${{ matrix.filter }}", reporter = multi_rep, stop_on_failure = FALSE)'"'"'
               )
             )
@@ -554,7 +554,7 @@ jobs:
             junit_rep <- JunitReporter$new(file = file.path(getwd(), "test_results_dsdanger.xml"));
             progress_rep <- ProgressReporter$new(max_failures = 999999);
             multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
-            options("datashield.return_errors" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
+            options("datashield.errors.print" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
             test_dir("tests/testthat", filter = "${{ env.TEST_FILTER_DSDANGER }}", reporter = multi_rep, stop_on_failure = FALSE)' || R_EXIT=$?
           cat test_console_output_dsdanger.txt
           n_tests=$(grep -c '<testcase' test_results_dsdanger.xml || true)
@@ -881,7 +881,7 @@ jobs:
             junit_rep <- JunitReporter$new(file = file.path(getwd(), "test_results.xml"));
             progress_rep <- ProgressReporter$new(max_failures = 999999);
             multi_rep <- MultiReporter$new(reporters = list(progress_rep, junit_rep));
-            options("datashield.return_errors" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
+            options("datashield.errors.print" = FALSE, "default_driver" = "${{ env.DS_DRIVER }}");
             test_dir("tests/testthat", filter = "${{ env.TEST_FILTER }}", reporter = multi_rep, stop_on_failure = FALSE)' || R_EXIT=$?
           cat test_console_output.txt
           n_tests=$(grep -c '<testcase' test_results.xml || true)
