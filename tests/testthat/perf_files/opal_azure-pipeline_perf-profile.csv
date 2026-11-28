@@ -51,6 +51,7 @@
 "ds.lexis::perf::0","2.449","0.5","2"
 "ds.list::perf::0","4.415","0.5","2"
 "ds.log::perf::0","8.415","0.5","2"
+"ds.listDisclosureSettings::perf::0","6.960","0.5","2"
 "ds.ls::perf::combine:0","8.689","0.5","2"
 "ds.lspline::perf::0","9.241","0.5","2"
 "ds.make::perf::0","10.92","0.5","2"
